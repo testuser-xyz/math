@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Test your knowledge of exponential and logarithmic functions with multiple-choice quizzes. Get instant feedback and see your score.">
-  <title>Quiz – MathPath</title>
+  <title>Quiz – Module_2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <!-- ── Header ──────────────────────────────────────────────────────────── -->
   <header class="header" role="banner">
     <nav class="nav" aria-label="Main navigation">
-      <a class="nav-brand" href="index.html" aria-label="MathPath home">📐 MathPath</a>
+      <a class="nav-brand" href="index.html" aria-label="Module_2 home">📐 Module_2</a>
       <ul class="nav-links" role="list">
         <li><a href="index.html">🏠 Home</a></li>
         <li><a href="topic.html?id=1">📖 Topics</a></li>
@@ -117,7 +117,7 @@
   <!-- ── Footer ──────────────────────────────────────────────────────────── -->
   <footer class="footer" role="contentinfo">
     <div class="container">
-      <p>📐 <strong>MathPath</strong> — Exponential &amp; Logarithmic Functions</p>
+      <p>📐 <strong>Module_2</strong> — Exponential &amp; Logarithmic Functions</p>
     </div>
   </footer>
 
@@ -135,10 +135,10 @@
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        await window.MathPath.renderQuizPage();
+        await window.Module2.renderQuizPage();
 
         // Fix "Review Topic" and practice links
-        const current = window.MathPath.getParam('id');
+        const current = window.Module2.getParam('id');
         if (current) {
           const rl = document.getElementById('reviewTopicLink');
           const pl = document.getElementById('practiceLinkFromQuiz');
@@ -147,7 +147,7 @@
         }
 
         // Other topic quiz buttons
-        const topics = await window.MathPath.getAllTopics();
+        const topics = await window.Module2.getAllTopics();
         const otherEl = document.getElementById('otherQuizTopics');
         if (otherEl && topics) {
           otherEl.innerHTML = topics.map(t =>

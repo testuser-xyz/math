@@ -5,7 +5,7 @@
  */
 
 const TOPICS_URL = './data/topics.json';
-window.MathPath = window.MathPath || {};
+window.Module2 = window.Module2 || {};
 
 // ── Cache & loader ────────────────────────────────────────────────────────────
 let _topicsCache = null;
@@ -73,7 +73,7 @@ async function renderHomepage() {
   grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div> Loading topics…</div>';
 
   const topics   = await getAllTopics();
-  const progress = window.MathPath.getProgress ? window.MathPath.getProgress() : {};
+  const progress = window.Module2.getProgress ? window.Module2.getProgress() : {};
   const done     = progress.completedTopics || [];
 
   // Update progress stats in hero
@@ -147,7 +147,7 @@ async function renderTopicPage() {
   const next     = idx < topics.length - 1 ? topics[idx + 1] : null;
 
   // Header
-  document.title = `${topic.title} – MathPath`;
+  document.title = `${topic.title} – Module_2`;
   setEl('topicIcon',    topic.icon);
   setEl('topicNumber',  `Topic ${idx + 1} of ${topics.length}`);
   setEl('topicTitle',   topic.title);
@@ -197,8 +197,8 @@ async function renderTopicPage() {
   });
 
   // Store current topic for progress tracking
-  window.MathPath.currentTopicId = topic.id;
-  window.MathPath.currentTopic   = topic;
+  window.Module2.currentTopicId = topic.id;
+  window.Module2.currentTopic   = topic;
 }
 
 function buildAccordion(t) {
@@ -219,8 +219,8 @@ function buildAccordion(t) {
       body: buildExampleCard(t.dailyExample)
     },
     {
-      id: 'bio', emoji: '🔬', title: 'Biochemistry Example',
-      body: buildExampleCard(t.bioExample)
+      id: 'extra', emoji: '🔬', title: 'Extra Example',
+      body: buildExampleCard(t.extraExample)
     },
     {
       id: 'visual', emoji: '📈', title: 'Interactive Graph',
@@ -228,8 +228,8 @@ function buildAccordion(t) {
                <div class="graph-title">${t.graphType === 'logarithmic' ? 'Logarithmic' : 'Exponential'} Growth Curve</div>
                <canvas id="topicGraph" class="graph-canvas" width="480" height="260"></canvas>
                <div class="graph-controls">
-                 <button class="btn btn-sm btn-secondary" onclick="window.MathPath.animateGraph()">▶ Animate</button>
-                 <button class="btn btn-sm btn-secondary" onclick="window.MathPath.resetGraph()">↺ Reset</button>
+                 <button class="btn btn-sm btn-secondary" onclick="window.Module2.animateGraph()">▶ Animate</button>
+                 <button class="btn btn-sm btn-secondary" onclick="window.Module2.resetGraph()">↺ Reset</button>
                </div>
                <div class="graph-legend">
                  <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div> y = ${t.graphType === 'logarithmic' ? 'log(x)' : '2ˣ'}</div>
@@ -258,7 +258,7 @@ function buildAccordion(t) {
 
   return sections.map((sec, i) => `
     <div class="accordion-item ${i === 0 ? 'open' : ''}" data-section="${sec.id}">
-      <button class="accordion-btn" aria-expanded="${i === 0}" onclick="window.MathPath.toggleAccordion(this)">
+      <button class="accordion-btn" aria-expanded="${i === 0}" onclick="window.Module2.toggleAccordion(this)">
         <span class="accordion-btn-left">
           <span class="accordion-emoji">${sec.emoji}</span>
           <span class="accordion-title">${sec.title}</span>
@@ -304,9 +304,9 @@ function buildSolvedProblem(sp) {
       <div class="solved-steps" id="solvedSteps">${steps}</div>
       <div class="solved-answer" id="solvedAnswer">✅ <strong>Answer:</strong> ${esc(sp.answer)}</div>
       <div class="solved-controls">
-        <button class="btn btn-accent btn-sm" onclick="window.MathPath.revealNextStep()">👁 Reveal Next Step</button>
-        <button class="btn btn-success btn-sm" onclick="window.MathPath.revealAllSteps()">✅ Show All</button>
-        <button class="btn btn-secondary btn-sm" onclick="window.MathPath.resetSteps()">↺ Reset</button>
+        <button class="btn btn-accent btn-sm" onclick="window.Module2.revealNextStep()">👁 Reveal Next Step</button>
+        <button class="btn btn-success btn-sm" onclick="window.Module2.revealAllSteps()">✅ Show All</button>
+        <button class="btn btn-secondary btn-sm" onclick="window.Module2.resetSteps()">↺ Reset</button>
       </div>
     </div>`;
 }
@@ -340,7 +340,7 @@ async function renderPracticePage() {
   const topic = await getTopicById(id);
   if (!topic) { window.location.href = 'index.html'; return; }
 
-  document.title = `Practice: ${topic.title} – MathPath`;
+  document.title = `Practice: ${topic.title} – Module_2`;
   setEl('practiceTopicIcon',  topic.icon);
   setEl('practiceTopicTitle', topic.title);
   setEl('backToTopicLink',    null, 'href', `topic.html?id=${topic.id}`);
@@ -361,9 +361,9 @@ async function renderPracticePage() {
       <div class="practice-q-text">${esc(p.question)}</div>
       <textarea class="practice-answer-input" id="ans-${i}" placeholder="Type your answer here…" rows="2"></textarea>
       <div class="practice-controls">
-        <button class="btn btn-sm btn-primary" onclick="window.MathPath.checkPracticeAnswer(${i})">✔ Check Answer</button>
-        <button class="btn btn-sm btn-secondary" onclick="window.MathPath.toggleHint(${i})">💡 Show Hint</button>
-        <button class="btn btn-sm btn-accent"    onclick="window.MathPath.toggleSteps(${i})">📋 Show Steps</button>
+        <button class="btn btn-sm btn-primary" onclick="window.Module2.checkPracticeAnswer(${i})">✔ Check Answer</button>
+        <button class="btn btn-sm btn-secondary" onclick="window.Module2.toggleHint(${i})">💡 Show Hint</button>
+        <button class="btn btn-sm btn-accent"    onclick="window.Module2.toggleSteps(${i})">📋 Show Steps</button>
       </div>
       <div class="hint-box" id="hint-${i}">
         <strong>💡 Hint:</strong> ${esc(p.hint)}
@@ -379,7 +379,7 @@ async function renderPracticePage() {
     </div>`).join('');
 
   // Store answers for checking
-  window.MathPath._practiceAnswers = probs.map(p => p.answer);
+  window.Module2._practiceAnswers = probs.map(p => p.answer);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -392,14 +392,14 @@ async function renderQuizPage() {
   const topic = await getTopicById(id);
   if (!topic) { window.location.href = 'index.html'; return; }
 
-  document.title = `Quiz: ${topic.title} – MathPath`;
+  document.title = `Quiz: ${topic.title} – Module_2`;
   setEl('quizTopicIcon',  topic.icon);
   setEl('quizTopicTitle', topic.title);
   setEl('backToTopicFromQuiz', null, 'href', `topic.html?id=${topic.id}`);
   setEl('practiceLinkFromQuiz', null, 'href', `practice.html?id=${topic.id}`);
 
-  if (window.MathPath.initQuiz) {
-    window.MathPath.initQuiz(topic);
+  if (window.Module2.initQuiz) {
+    window.Module2.initQuiz(topic);
   }
 }
 
@@ -414,7 +414,7 @@ function setEl(id, text, attr, val) {
 }
 
 // ── Expose globally ───────────────────────────────────────────────────────────
-Object.assign(window.MathPath, {
+Object.assign(window.Module2, {
   loadTopics,
   getAllTopics,
   getTopicById,

@@ -4,7 +4,7 @@
  * Multiple-choice format with instant feedback and score tracking.
  */
 
-window.MathPath = window.MathPath || {};
+window.Module2 = window.Module2 || {};
 
 let _quiz = {
   topic:      null,
@@ -60,7 +60,7 @@ function renderQuestion() {
 
   const letters = ['A','B','C','D','E'];
   optList.innerHTML = q.options.map((opt, i) => `
-    <button class="quiz-option" data-idx="${i}" onclick="window.MathPath.selectOption(this, ${i})">
+    <button class="quiz-option" data-idx="${i}" onclick="window.Module2.selectOption(this, ${i})">
       <span class="quiz-option-letter">${letters[i]}</span>
       <span>${escQ(opt)}</span>
     </button>`).join('');
@@ -108,7 +108,7 @@ function selectOption(btnEl, chosenIdx) {
   if (nextBtn) nextBtn.disabled = false;
 
   // Small toast feedback
-  window.MathPath.showToast && window.MathPath.showToast(
+  window.Module2.showToast && window.Module2.showToast(
     isCorrect ? '🎉 Correct!' : '📖 Almost — check the explanation!',
     isCorrect ? 'success' : ''
   );
@@ -133,8 +133,8 @@ function showResults() {
   const pct   = Math.round((score / total) * 100);
 
   // Save score
-  if (window.MathPath.saveQuizScore && _quiz.topic) {
-    window.MathPath.saveQuizScore(_quiz.topic.id, score, total);
+  if (window.Module2.saveQuizScore && _quiz.topic) {
+    window.Module2.saveQuizScore(_quiz.topic.id, score, total);
   }
 
   // Update progress bar to 100%
@@ -175,7 +175,7 @@ function getScoreMessage(pct) {
   if (pct >= 80)   return 'Excellent work! You really understand this material!';
   if (pct >= 60)   return 'Good job! A little more practice and you will nail it!';
   if (pct >= 40)   return 'Keep going! Review the topic explanation and try again.';
-  return 'That is okay — every expert started as a beginner! Review the topic and try again.';
+  return 'Review the topic explanation and try again.';
 }
 
 function renderStars(pct) {
@@ -229,7 +229,7 @@ function escQ(str) {
 }
 
 // ── Expose globally ──────────────────────────────────────────────────────────
-Object.assign(window.MathPath, {
+Object.assign(window.Module2, {
   initQuiz,
   selectOption,
   advanceQuiz

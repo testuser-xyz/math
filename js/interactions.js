@@ -7,7 +7,7 @@
  *   - Miscellaneous UI interactions
  */
 
-window.MathPath = window.MathPath || {};
+window.Module2 = window.Module2 || {};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Graph Drawing Engine
@@ -25,7 +25,7 @@ function initGraph() {
   const canvas = document.getElementById('topicGraph');
   if (!canvas) return;
 
-  const topic = window.MathPath.currentTopic;
+  const topic = window.Module2.currentTopic;
   const type  = (topic && topic.graphType) || 'exponential';
 
   _graphState.canvas   = canvas;
@@ -369,7 +369,7 @@ function initInteractions() {
 }
 
 // ── Expose globally ───────────────────────────────────────────────────────────
-Object.assign(window.MathPath, {
+Object.assign(window.Module2, {
   initInteractions,
   initGraph,
   animateGraph,

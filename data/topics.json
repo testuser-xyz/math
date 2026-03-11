@@ -30,7 +30,7 @@
           { "label": "Round 4", "value": "81 people" }
         ]
       },
-      "bioExample": {
+      "extraExample": {
         "title": "Bacteria in a Petri Dish",
         "story": "One bacterium divides into two every hour. Two become four. Four become eight. This doubling is exactly what exponential functions describe! After just 10 hours, a single cell becomes over 1,000 cells — with no addition, only multiplication.",
         "table": [
@@ -140,7 +140,7 @@
           { "label": "Year 3", "value": "$8,000" }
         ]
       },
-      "bioExample": {
+      "extraExample": {
         "title": "Bacteria Count",
         "story": "A lab experiment starts with 10 bacteria cells that double every hour. We write the equation as N = 10 × 2ᵗ. After 4 hours: N = 10 × 2⁴ = 10 × 16 = 160 bacteria cells!",
         "table": [
@@ -253,9 +253,9 @@
           { "label": "After 2 years", "value": "$1,210" }
         ]
       },
-      "bioExample": {
-        "title": "Continuous Biochemical Breakdown",
-        "story": "The breakdown of glucose in a solution does not happen in sudden bursts — it decomposes smoothly every fraction of a second. Scientists use base e to model this because e represents perfect, non-stop change. Enzyme reaction rates in biochemistry labs regularly use the formula A = Peʳᵗ.",
+      "extraExample": {
+        "title": "Continuous Change Example",
+        "story": "The breakdown of glucose in a solution does not happen in sudden bursts — it changes smoothly every fraction of a second. Scientists use base e to model this because e represents perfect, non-stop change. This type of process is often modeled with the formula A = Peʳᵗ.",
         "table": [
           { "label": "Type of change", "value": "Continuous" },
           { "label": "Formula used", "value": "A = P × eʳᵗ" },
@@ -364,7 +364,7 @@
           { "label": "x = 3",  "value": "y = 8" }
         ]
       },
-      "bioExample": {
+      "extraExample": {
         "title": "Virus Replication Curve",
         "story": "Scientists graph the number of virus cells over time during an infection. The graph starts almost flat (early infection — very few cells), then suddenly curves sharply upward (exponential explosion of viral cells). This classic J-shaped curve is the signature shape in biology textbooks.",
         "table": [
@@ -473,7 +473,7 @@
           { "label": "log₂(8) = ?", "value": "Answer: 3 folds!" }
         ]
       },
-      "bioExample": {
+      "extraExample": {
         "title": "Bacteria Doubling — Working Backwards",
         "story": "You start with 1 bacteria cell. Some time later, you count 16 cells in the petri dish. How many doubling cycles happened? A logarithm answers this! log₂(16) = 4. So exactly 4 doubling cycles occurred. Logarithms let you find TIME from a count.",
         "table": [
@@ -580,7 +580,7 @@
           { "label": "log(1000)", "value": "= 3  (10³ = 1000)" }
         ]
       },
-      "bioExample": {
+      "extraExample": {
         "title": "The pH Scale",
         "story": "pH measures how acidic a solution is, using negative base-10 logarithms of hydrogen ion concentration. Blood must stay at pH 7.4. Stomach acid is at pH 2. That is a difference of 5.4 on the log scale, meaning stomach acid has over 250,000 times more hydrogen ions than blood! Logarithms turn unimaginably small concentrations into easy numbers.",
         "table": [
@@ -686,9 +686,9 @@
           { "label": "x = 1000", "value": "y = 3" }
         ]
       },
-      "bioExample": {
+      "extraExample": {
         "title": "Glucose Concentration Over Time",
-        "story": "When measuring how a reactant like glucose is used up in a chemical reaction, the concentration often drops quickly at first, then levels off. Plotting these measurements on a graph and connecting the dots gives you a logarithmic shape — rises fast, then flattens. This is a real graph type used in biochemistry labs.",
+        "story": "When measuring how a reactant like glucose is used up in a chemical reaction, the concentration often drops quickly at first, then levels off. Plotting these measurements on a graph and connecting the dots gives you a logarithmic shape — rises fast, then flattens. This is a common graph pattern in real measurements.",
         "table": [
           { "label": "Early reaction", "value": "Rapid change (steep rise)" },
           { "label": "Mid reaction", "value": "Slowing down" },

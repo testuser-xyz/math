@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Learn the topic step by step with simple explanations, examples, interactive graphs, and solved problems.">
-  <title>Topic – MathPath</title>
+  <title>Topic – Module_2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
   <!-- ── Header ──────────────────────────────────────────────────────────── -->
   <header class="header" role="banner">
     <nav class="nav" aria-label="Main navigation">
-      <a class="nav-brand" href="index.html" aria-label="MathPath home">📐 MathPath</a>
+      <a class="nav-brand" href="index.html" aria-label="Module_2 home">📐 Module_2</a>
       <ul class="nav-links" role="list">
         <li><a href="index.html">🏠 Home</a></li>
         <li><a href="topic.html?id=1" class="active">📖 Topics</a></li>
@@ -57,7 +57,7 @@
       <span class="topic-step-pill active">💡 Explanation</span>
       <span class="topic-step-pill">📋 Steps</span>
       <span class="topic-step-pill">🌍 Daily Example</span>
-      <span class="topic-step-pill">🔬 Bio Example</span>
+      <span class="topic-step-pill">🔬 Extra Example</span>
       <span class="topic-step-pill">📈 Graph</span>
       <span class="topic-step-pill">✏️ Solved Problem</span>
       <span class="topic-step-pill">💡 Tips</span>
@@ -141,7 +141,7 @@
   <!-- ── Footer ──────────────────────────────────────────────────────────── -->
   <footer class="footer" role="contentinfo">
     <div class="container">
-      <p>📐 <strong>MathPath</strong> — Exponential &amp; Logarithmic Functions</p>
+      <p>📐 <strong>Module_2</strong> — Exponential &amp; Logarithmic Functions</p>
       <p style="margin-top:.35rem"><a href="index.html">← Back to all topics</a></p>
     </div>
   </footer>
@@ -159,10 +159,10 @@
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        await window.MathPath.renderTopicPage();
+        await window.Module2.renderTopicPage();
 
         // Update sidebar progress
-        const p    = window.MathPath.getProgress();
+          const p    = window.Module2.getProgress();
         const done = (p.completedTopics || []).length;
         const total = 7;
         const sideEl = document.getElementById('sidebarProgress');
@@ -173,7 +173,7 @@
           </div>`;
 
         // Update sidebar quick links with current topic id
-        const id = window.MathPath.getParam('id');
+          const id = window.Module2.getParam('id');
         const spl = document.getElementById('sidebarPracticeLink');
         const sql = document.getElementById('sidebarQuizLink');
         if (id) {
@@ -182,9 +182,9 @@
         }
 
         // Init interactions and solve-step pills
-        window.MathPath.initInteractions();
-        window.MathPath.initMarkComplete();
-        window.MathPath.initScrollAnimations();
+        window.Module2.initInteractions();
+        window.Module2.initMarkComplete();
+        window.Module2.initScrollAnimations();
 
         // Sync accordion section pills with scroll
         initSectionPills();

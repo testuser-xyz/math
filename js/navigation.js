@@ -4,9 +4,9 @@
  * and accordion toggling.
  */
 
-window.MathPath = window.MathPath || {};
+window.Module2 = window.Module2 || {};
 
-const STORAGE_KEY = 'mathpath_progress';
+const STORAGE_KEY = 'module2_progress';
 
 // ── Progress helpers ──────────────────────────────────────────────────────────
 function getProgress() {
@@ -47,7 +47,7 @@ function updateCompleteBadge(id) {
 
 // ── Dark Mode ─────────────────────────────────────────────────────────────────
 function initDarkMode() {
-  const pref  = localStorage.getItem('mathpath_theme') || 'light';
+  const pref  = localStorage.getItem('module2_theme') || 'light';
   const btn   = document.getElementById('darkModeToggle');
   applyTheme(pref);
   if (btn) {
@@ -55,7 +55,7 @@ function initDarkMode() {
       const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       const next    = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
-      localStorage.setItem('mathpath_theme', next);
+      localStorage.setItem('module2_theme', next);
     });
   }
 }
@@ -147,7 +147,7 @@ function toggleSteps(idx) {
 function checkPracticeAnswer(idx) {
   const input  = document.getElementById(`ans-${idx}`);
   const fb     = document.getElementById(`fb-${idx}`);
-  const correct = (window.MathPath._practiceAnswers || [])[idx];
+  const correct = (window.Module2._practiceAnswers || [])[idx];
   if (!input || !fb || !correct) return;
 
   const raw     = input.value.trim().toLowerCase();
@@ -170,7 +170,7 @@ function initMarkComplete() {
   const btn = document.getElementById('markCompleteBtn');
   if (!btn) return;
   btn.addEventListener('click', () => {
-    const id = window.MathPath.currentTopicId;
+    const id = window.Module2.currentTopicId;
     if (id) {
       markTopicComplete(id);
       btn.textContent = '✅ Completed!';
@@ -181,7 +181,7 @@ function initMarkComplete() {
   });
 
   // Pre-fill if already done
-  const id = window.MathPath.currentTopicId;
+  const id = window.Module2.currentTopicId;
   if (id && isTopicComplete(id)) {
     btn.textContent = '✅ Completed!';
     btn.disabled = true;
@@ -254,7 +254,7 @@ function esc(str) {
 }
 
 // ── Expose globally ───────────────────────────────────────────────────────────
-Object.assign(window.MathPath, {
+Object.assign(window.Module2, {
   getProgress,
   saveProgress,
   markTopicComplete,
