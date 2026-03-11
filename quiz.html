@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test your knowledge of exponential and logarithmic functions with multiple-choice quizzes. Get instant feedback and see your score.">
+  <title>Quiz – MathPath</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-brand" href="index.html" aria-label="MathPath home">📐 MathPath</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="topic.html?id=1">📖 Topics</a></li>
+        <li><a href="practice.html?id=1">✏️ Practice</a></li>
+        <li><a href="quiz.html?id=1" class="active">🎯 Quiz</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="darkModeToggle" title="Toggle dark / light mode" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── Quiz header ───────────────────────────────────────────────────── -->
+  <div class="quiz-header">
+    <div class="container" style="max-width:680px">
+      <a href="topic.html" class="back-btn" id="backToTopicFromQuiz">← Back to Topic</a>
+      <div style="display:flex;align-items:center;gap:1rem;margin-top:1rem;flex-wrap:wrap">
+        <span style="font-size:2.5rem" id="quizTopicIcon" aria-hidden="true">🎯</span>
+        <div>
+          <span class="badge badge-primary" style="margin-bottom:.3rem">🎯 Knowledge Quiz</span>
+          <h1 style="font-size:1.6rem;margin:0" id="quizTopicTitle">Loading…</h1>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="quiz-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+      </div>
+      <div class="flex justify-between align-center" style="margin-top:.25rem">
+        <span class="quiz-q-counter" id="quizCounter">Question 1 of 3</span>
+        <span class="quiz-q-counter" style="color:var(--text-muted)">Multiple choice · instant feedback</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main quiz area ────────────────────────────────────────────────── -->
+  <main class="section" id="main-content" style="padding-top:1.5rem">
+    <div class="container" style="max-width:680px" id="quizContainer">
+
+      <!-- Quiz card (shown during quiz) -->
+      <div class="quiz-card animate-fadeIn" id="quizCard">
+
+        <!-- Question text -->
+        <div id="quizQuestionText" class="quiz-question-text">
+          Loading question…
+        </div>
+
+        <!-- Answer options -->
+        <div class="quiz-options" id="quizOptions" role="group" aria-label="Answer options">
+          <!-- Rendered by quizzes.js -->
+        </div>
+
+        <!-- Explanation (shown after answering) -->
+        <div class="quiz-explanation" id="quizExplanation" role="alert"></div>
+
+        <!-- Controls -->
+        <div class="quiz-controls">
+          <div style="font-size:.82rem;color:var(--text-muted)">
+            💡 Pick one answer — the correct one is revealed immediately.
+          </div>
+          <button class="btn btn-primary" id="quizNextBtn" disabled>
+            Next Question →
+          </button>
+        </div>
+      </div>
+
+      <!-- Score card (shown after quiz ends) -->
+      <div class="quiz-score-card hidden animate-fadeIn" id="quizScoreCard">
+        <div class="quiz-score-emoji" id="quizScoreEmoji">🎉</div>
+        <div class="quiz-score-big" id="quizScoreNum">0/3</div>
+        <div class="quiz-score-label" id="quizScorePct">0% correct</div>
+        <div class="stars" id="quizStars">
+          <span class="star">⭐</span><span class="star">⭐</span><span class="star">⭐</span>
+        </div>
+        <p class="quiz-score-message" id="quizScoreMessage">Great attempt!</p>
+
+        <!-- Action buttons -->
+        <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+          <button class="btn btn-primary" id="quizRetryBtn">🔄 Try Again</button>
+          <a href="practice.html" class="btn btn-accent" id="practiceLinkFromQuiz">✏️ More Practice</a>
+          <a href="topic.html"    class="btn btn-secondary" id="reviewTopicLink">📖 Review Topic</a>
+        </div>
+
+        <!-- Wrong-answer review -->
+        <div id="quizReview" style="text-align:left;max-width:480px;margin:0 auto"></div>
+
+        <!-- Other quizzes -->
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h4 style="margin-bottom:1rem">Try Another Topic Quiz</h4>
+          <div id="otherQuizTopics" style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p>📐 <strong>MathPath</strong> — Exponential &amp; Logarithmic Functions</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTopBtn" title="Back to top" aria-label="Scroll to top">↑</button>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/navigation.js"></script>
+  <script src="js/quizzes.js"></script>
+  <script src="js/contentLoader.js"></script>
+  <script src="js/interactions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await window.MathPath.renderQuizPage();
+
+        // Fix "Review Topic" and practice links
+        const current = window.MathPath.getParam('id');
+        if (current) {
+          const rl = document.getElementById('reviewTopicLink');
+          const pl = document.getElementById('practiceLinkFromQuiz');
+          if (rl) rl.href = `topic.html?id=${current}`;
+          if (pl) pl.href = `practice.html?id=${current}`;
+        }
+
+        // Other topic quiz buttons
+        const topics = await window.MathPath.getAllTopics();
+        const otherEl = document.getElementById('otherQuizTopics');
+        if (otherEl && topics) {
+          otherEl.innerHTML = topics.map(t =>
+            `<a href="quiz.html?id=${t.id}"
+                class="btn btn-secondary btn-sm"
+                style="${String(t.id) === current ? 'background:var(--primary);color:#fff;border-color:var(--primary)' : ''}">
+               ${t.icon} Topic ${t.id}
+             </a>`
+          ).join('');
+        }
+
+      } catch (e) {
+        console.error('Quiz page init error:', e);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn Exponential and Logarithmic Functions step by step — with real-life and biochemistry examples. A beginner-friendly interactive math course.">
+  <title>MathPath – Exponential & Logarithmic Functions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-brand" href="index.html" aria-label="MathPath home">
+        📐 MathPath
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="active">🏠 Home</a></li>
+        <li><a href="topic.html?id=1">📖 Topics</a></li>
+        <li><a href="practice.html?id=1">✏️ Practice</a></li>
+        <li><a href="quiz.html?id=1">🎯 Quiz</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="darkModeToggle" title="Toggle dark / light mode" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="heroHeading">
+      <div class="hero-content container">
+        <span class="hero-badge">📚 Beginner Friendly · No Prior Math Needed</span>
+        <h1 id="heroHeading">Exponential &amp; Logarithmic<br>Functions</h1>
+        <p>A visual, step-by-step learning journey designed for you — with everyday examples,
+           biochemistry connections, and interactive practice.</p>
+        <div class="hero-actions">
+          <a href="topic.html?id=1" class="btn btn-lg" style="background:#fff;color:var(--primary-dark);font-weight:800">
+            🚀 Start Learning Now
+          </a>
+          <a href="#topics" class="btn btn-lg btn-secondary" style="border-color:rgba(255,255,255,0.6);color:#fff">
+            📋 See All Topics
+          </a>
+        </div>
+
+        <!-- Progress overview (filled by JS) -->
+        <div class="progress-overview" role="region" aria-label="Your progress">
+          <div class="progress-stat">
+            <div class="progress-stat-number" id="progressNum">0/7</div>
+            <div class="progress-stat-label">Topics Done</div>
+          </div>
+          <div class="progress-stat">
+            <div>
+              <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
+              </div>
+              <div class="progress-stat-label" style="margin-top:.3rem" id="progressPct">0% complete</div>
+            </div>
+          </div>
+          <div class="progress-stat">
+            <div class="progress-stat-number">7</div>
+            <div class="progress-stat-label">Total Topics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Why This Course ─────────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="whyHeading">
+      <div class="container">
+        <h2 class="section-title" id="whyHeading">Why Learn This?</h2>
+        <div class="grid-3">
+          <div class="card animate-fadeInUp delay-1">
+            <div style="font-size:2.5rem;margin-bottom:.75rem">🦠</div>
+            <h3>Biochemistry</h3>
+            <p>Bacteria growth, drug concentrations, pH scales, and enzyme reactions all use exponential and logarithmic math.</p>
+          </div>
+          <div class="card animate-fadeInUp delay-2">
+            <div style="font-size:2.5rem;margin-bottom:.75rem">💻</div>
+            <h3>Computer Science</h3>
+            <p>Algorithm complexity, data compression, and network models all rely on exponential and logarithmic functions.</p>
+          </div>
+          <div class="card animate-fadeInUp delay-3">
+            <div style="font-size:2.5rem;margin-bottom:.75rem">🌍</div>
+            <h3>Everyday Life</h3>
+            <p>Bank interest, viral videos, earthquake scales, and sound decibels — they all follow the math you will learn here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Topics Grid ─────────────────────────────────────────────────── -->
+    <section class="topics-section" id="topics" aria-labelledby="topicsHeading">
+      <div class="container">
+        <h2 class="section-title" id="topicsHeading">All Topics</h2>
+        <div class="topics-grid" id="topicsGrid" role="list">
+          <!-- Rendered by contentLoader.js -->
+          <div class="loading-spinner">
+            <div class="spinner" role="status" aria-label="Loading"></div>
+            Loading topics…
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Learning Path ──────────────────────────────────────────────── -->
+    <section class="section learning-path" aria-labelledby="pathHeading" style="background:var(--surface-2)">
+      <div class="container container--narrow">
+        <h2 class="section-title" id="pathHeading">Your Learning Path</h2>
+        <p class="text-center" style="color:var(--text-muted);margin-bottom:2rem;font-size:.95rem">
+          Follow these topics in order. Each one builds on the previous.
+        </p>
+        <div class="learning-path-steps" id="learningPathSteps" role="list">
+          <!-- Rendered by contentLoader.js -->
+        </div>
+        <div class="text-center mt-3">
+          <a href="topic.html?id=1" class="btn btn-primary btn-lg">Begin Topic 1 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Quick Feature Overview ────────────────────────────────────── -->
+    <section class="section" aria-labelledby="featuresHeading">
+      <div class="container">
+        <h2 class="section-title" id="featuresHeading">What You Get</h2>
+        <div class="grid-3">
+          <div class="card text-center">
+            <div style="font-size:2.2rem;margin-bottom:.5rem">🎓</div>
+            <h4>Simple Explanations</h4>
+            <p style="font-size:.88rem;color:var(--text-muted)">Every topic explained in plain language — like a smart friend, not a textbook.</p>
+          </div>
+          <div class="card text-center">
+            <div style="font-size:2.2rem;margin-bottom:.5rem">📈</div>
+            <h4>Interactive Graphs</h4>
+            <p style="font-size:.88rem;color:var(--text-muted)">Watch exponential and log curves animate live on screen. See the math visually.</p>
+          </div>
+          <div class="card text-center">
+            <div style="font-size:2.2rem;margin-bottom:.5rem">🔬</div>
+            <h4>Biochemistry Links</h4>
+            <p style="font-size:.88rem;color:var(--text-muted)">Every topic connects to real biochemistry — bacteria, pH, enzymes, and more.</p>
+          </div>
+          <div class="card text-center">
+            <div style="font-size:2.2rem;margin-bottom:.5rem">✏️</div>
+            <h4>Step-by-Step Problems</h4>
+            <p style="font-size:.88rem;color:var(--text-muted)">Reveal solved problems one step at a time. No surprise answers.</p>
+          </div>
+          <div class="card text-center">
+            <div style="font-size:2.2rem;margin-bottom:.5rem">🎯</div>
+            <h4>Quizzes & Practice</h4>
+            <p style="font-size:.88rem;color:var(--text-muted)">Test your knowledge with multiple-choice quizzes. Instant, friendly feedback.</p>
+          </div>
+          <div class="card text-center">
+            <div style="font-size:2.2rem;margin-bottom:.5rem">🏆</div>
+            <h4>Progress Tracking</h4>
+            <p style="font-size:.88rem;color:var(--text-muted)">Your progress is saved automatically. Pick up right where you left off.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p>📐 <strong>MathPath</strong> — Exponential &amp; Logarithmic Functions</p>
+      <p style="margin-top:.35rem">Built for beginner learners. Learn at your own pace. 🚀</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTopBtn" title="Back to top" aria-label="Scroll to top">↑</button>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts (navigation first, then loader, then page init) -->
+  <script src="js/navigation.js"></script>
+  <script src="js/contentLoader.js"></script>
+  <script src="js/interactions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await window.MathPath.renderHomepage();
+        window.MathPath.initScrollAnimations();
+        window.MathPath.initCardKeyboard();
+      } catch (e) {
+        console.error('Homepage init error:', e);
+      }
+    });
+  </script>
+</body>
+</html>

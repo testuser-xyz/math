@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn the topic step by step with simple explanations, examples, interactive graphs, and solved problems.">
+  <title>Topic – MathPath</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────────────── -->
+  <header class="header" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-brand" href="index.html" aria-label="MathPath home">📐 MathPath</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="topic.html?id=1" class="active">📖 Topics</a></li>
+        <li><a href="practice.html?id=1">✏️ Practice</a></li>
+        <li><a href="quiz.html?id=1">🎯 Quiz</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="darkModeToggle" title="Toggle dark / light mode" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── Topic header banner ───────────────────────────────────────────── -->
+  <div class="topic-header" id="topicHeaderBanner">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div style="margin-bottom:.75rem">
+        <a href="index.html" class="back-btn">← All Topics</a>
+      </div>
+      <div class="topic-header-inner">
+        <div class="topic-header-icon" id="topicIcon" aria-hidden="true">📖</div>
+        <div class="topic-header-info">
+          <div class="topic-header-number" id="topicNumber">Topic 1</div>
+          <h1 class="topic-header-title" id="topicTitle">Loading…</h1>
+          <p class="topic-header-summary" id="topicSummary"></p>
+        </div>
+        <div class="topic-nav-btns">
+          <button class="btn btn-secondary btn-sm" id="markCompleteBtn">☑ Mark Complete</button>
+          <a href="practice.html" class="btn btn-accent btn-sm" id="practiceLink">✏️ Practice</a>
+          <a href="quiz.html"     class="btn btn-primary btn-sm" id="quizLink">🎯 Take Quiz</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Step pills progress bar ──────────────────────────────────────── -->
+  <div class="topic-progress" role="navigation" aria-label="Topic sections">
+    <div class="topic-progress-inner" id="topicProgressPills">
+      <span class="topic-step-pill active">💡 Explanation</span>
+      <span class="topic-step-pill">📋 Steps</span>
+      <span class="topic-step-pill">🌍 Daily Example</span>
+      <span class="topic-step-pill">🔬 Bio Example</span>
+      <span class="topic-step-pill">📈 Graph</span>
+      <span class="topic-step-pill">✏️ Solved Problem</span>
+      <span class="topic-step-pill">💡 Tips</span>
+      <span class="topic-step-pill">🌟 Did You Know?</span>
+    </div>
+  </div>
+
+  <!-- ── Main content ──────────────────────────────────────────────────── -->
+  <main class="topic-content" id="main-content">
+    <div class="container">
+      <div class="topic-layout">
+
+        <!-- Left: main accordion content -->
+        <div class="topic-main">
+
+          <!-- Formula card (above accordion) -->
+          <div class="formula-card" id="topicFormulaCard">
+            <div class="formula-card-label">📐 Core Formula</div>
+            <div class="formula-card-text" id="topicFormula">Loading…</div>
+          </div>
+
+          <!-- Accordion sections (rendered by contentLoader.js) -->
+          <div class="accordion" id="topicAccordion" role="list">
+            <div class="loading-spinner">
+              <div class="spinner" role="status" aria-label="Loading topic content"></div>
+              Loading topic content…
+            </div>
+          </div>
+
+          <!-- Prev / Next navigation -->
+          <div class="flex justify-between mt-3" style="flex-wrap:wrap;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+            <a href="#" class="btn btn-secondary" id="prevTopicBtn">← Previous Topic</a>
+            <a href="#" class="btn btn-primary"   id="nextTopicBtn">Next Topic →</a>
+          </div>
+
+        </div>
+
+        <!-- Right: sidebar -->
+        <aside class="topic-sidebar" aria-label="Topic navigation">
+
+          <!-- All topics quick nav -->
+          <div class="card quick-nav-card">
+            <h4>📚 All Topics</h4>
+            <ul class="quick-nav-list" id="allTopicsNav" role="list">
+              <!-- Rendered by contentLoader.js -->
+            </ul>
+          </div>
+
+          <!-- Progress card -->
+          <div class="card" style="margin-bottom:1.25rem">
+            <h4 style="margin-bottom:.75rem">📊 Your Progress</h4>
+            <div id="sidebarProgress" style="font-size:.88rem;color:var(--text-muted)">
+              Loading…
+            </div>
+          </div>
+
+          <!-- Quick links -->
+          <div class="card">
+            <h4 style="margin-bottom:.75rem">⚡ Quick Actions</h4>
+            <div style="display:flex;flex-direction:column;gap:.5rem">
+              <a href="practice.html" class="btn btn-accent btn-sm btn-block" id="sidebarPracticeLink">✏️ Practice Problems</a>
+              <a href="quiz.html"     class="btn btn-primary btn-sm btn-block" id="sidebarQuizLink">🎯 Take Quiz</a>
+              <a href="index.html"    class="btn btn-secondary btn-sm btn-block">🏠 All Topics</a>
+            </div>
+          </div>
+
+          <!-- Keyboard shortcuts hint -->
+          <div class="did-you-know" style="margin-top:1.25rem">
+            <div class="did-you-know-icon" aria-hidden="true">⌨️</div>
+            <div class="did-you-know-text">
+              <div class="did-you-know-label">Keyboard Tip</div>
+              Use <strong>← →</strong> arrow keys to jump between topics quickly!
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p>📐 <strong>MathPath</strong> — Exponential &amp; Logarithmic Functions</p>
+      <p style="margin-top:.35rem"><a href="index.html">← Back to all topics</a></p>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTopBtn" title="Back to top" aria-label="Scroll to top">↑</button>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/navigation.js"></script>
+  <script src="js/contentLoader.js"></script>
+  <script src="js/interactions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await window.MathPath.renderTopicPage();
+
+        // Update sidebar progress
+        const p    = window.MathPath.getProgress();
+        const done = (p.completedTopics || []).length;
+        const total = 7;
+        const sideEl = document.getElementById('sidebarProgress');
+        if (sideEl) sideEl.innerHTML = `
+          <div>${done} of ${total} topics completed</div>
+          <div class="progress-bar-wrap" style="width:100%;margin-top:.5rem;border-radius:4px;background:var(--border)">
+            <div class="progress-bar-fill" style="background:var(--secondary);border-radius:4px;height:8px;width:${Math.round(done/total*100)}%"></div>
+          </div>`;
+
+        // Update sidebar quick links with current topic id
+        const id = window.MathPath.getParam('id');
+        const spl = document.getElementById('sidebarPracticeLink');
+        const sql = document.getElementById('sidebarQuizLink');
+        if (id) {
+          if (spl) spl.href = `practice.html?id=${id}`;
+          if (sql) sql.href = `quiz.html?id=${id}`;
+        }
+
+        // Init interactions and solve-step pills
+        window.MathPath.initInteractions();
+        window.MathPath.initMarkComplete();
+        window.MathPath.initScrollAnimations();
+
+        // Sync accordion section pills with scroll
+        initSectionPills();
+
+      } catch (e) {
+        console.error('Topic page init error:', e);
+      }
+    });
+
+    // Highlight section pill when accordion item is opened
+    function initSectionPills() {
+      const pills = document.querySelectorAll('.topic-step-pill');
+      document.querySelectorAll('.accordion-btn').forEach((btn, i) => {
+        btn.addEventListener('click', () => {
+          pills.forEach(p => p.classList.remove('active'));
+          if (pills[i]) pills[i].classList.add('active');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

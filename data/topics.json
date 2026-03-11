@@ -1,0 +1,769 @@
+{
+  "topics": [
+    {
+      "id": 1,
+      "slug": "exponential-functions",
+      "title": "What is an Exponential Function?",
+      "icon": "🚀",
+      "summary": "Discover how putting a variable in the exponent position causes incredibly fast growth or decay.",
+      "color": "#4A90D9",
+      "graphType": "exponential",
+      "explanation": "An exponential function is one where the variable (like x) sits as the tiny number floating at the top-right — the exponent. Think of it like a snowball rolling downhill — it keeps getting bigger and bigger, much faster than normal addition. Instead of adding the same amount each time, exponential functions MULTIPLY by the same amount each time, which makes things grow incredibly fast. The base is the big bottom number, and the exponent (x) tells you how many times to multiply.",
+      "keyIdea": "An exponential function shows very fast growth or decay because numbers are repeatedly multiplied — not added.",
+      "formula": "y = bˣ   (b is the base, x is the exponent)",
+      "steps": [
+        "Look at the equation carefully.",
+        "Find the variable — usually called x.",
+        "Ask yourself: Where is the x sitting?",
+        "If x is the tiny floating number at the top-right → It IS exponential.",
+        "If x is the big bottom number → It is NOT exponential (that is called a polynomial).",
+        "If base b > 1 → the function GROWS. If 0 < b < 1 → the function DECAYS."
+      ],
+      "dailyExample": {
+        "title": "A Viral Video",
+        "story": "One person shares a funny video with 3 friends. Those 3 people each share it with 3 more (now 9 people have it). Those 9 share with 3 more each (now 27 people). The views do not just grow — they EXPLODE! By round 5 you already have 243 viewers. That exploding pattern is exponential growth.",
+        "table": [
+          { "label": "Round 0", "value": "1 person" },
+          { "label": "Round 1", "value": "3 people" },
+          { "label": "Round 2", "value": "9 people" },
+          { "label": "Round 3", "value": "27 people" },
+          { "label": "Round 4", "value": "81 people" }
+        ]
+      },
+      "bioExample": {
+        "title": "Bacteria in a Petri Dish",
+        "story": "One bacterium divides into two every hour. Two become four. Four become eight. This doubling is exactly what exponential functions describe! After just 10 hours, a single cell becomes over 1,000 cells — with no addition, only multiplication.",
+        "table": [
+          { "label": "Hour 0", "value": "1 cell" },
+          { "label": "Hour 1", "value": "2 cells" },
+          { "label": "Hour 2", "value": "4 cells" },
+          { "label": "Hour 3", "value": "8 cells" },
+          { "label": "Hour 4", "value": "16 cells" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "Find the value of y = 3⁴",
+        "steps": [
+          { "step": 1, "text": "Write it out as repeated multiplication", "math": "3⁴ = 3 × 3 × 3 × 3" },
+          { "step": 2, "text": "Multiply the first two numbers", "math": "3 × 3 = 9" },
+          { "step": 3, "text": "Multiply by 3 again", "math": "9 × 3 = 27" },
+          { "step": 4, "text": "Multiply by 3 one last time", "math": "27 × 3 = 81" }
+        ],
+        "answer": "y = 81"
+      },
+      "tips": [
+        "If the base is bigger than 1 (like 2, 3, 10) → the function GROWS as x increases.",
+        "If the base is between 0 and 1 (like 0.5) → the function DECAYS (gets smaller).",
+        "The graph always passes through the point (0, 1) because anything raised to power 0 equals 1."
+      ],
+      "mistakes": [
+        "Do not confuse 3x² with 3ˣ. In 3x², the x is the big bottom number — that is a polynomial, NOT exponential!",
+        "Remember: 2³ does NOT equal 6 (that would be 2 × 3). It means 2 × 2 × 2 = 8."
+      ],
+      "didYouKnow": "When people say something 'grows exponentially' in everyday life — like social media followers or a virus spreading — they literally mean it follows the same mathematical pattern you are learning here!",
+      "quiz": [
+        {
+          "question": "Which of these is an exponential function?",
+          "type": "multiple-choice",
+          "options": ["y = x⁵", "y = 5ˣ", "y = 5x", "y = x + 5"],
+          "correct": 1,
+          "explanation": "In y = 5ˣ, the variable x is in the exponent position (floating top-right). That makes it exponential!"
+        },
+        {
+          "question": "What is the value of 2⁴?",
+          "type": "multiple-choice",
+          "options": ["8", "16", "24", "6"],
+          "correct": 1,
+          "explanation": "2⁴ = 2 × 2 × 2 × 2 = 16. Multiply 2 by itself four times!"
+        },
+        {
+          "question": "If the base of an exponential function is 0.5, the function will:",
+          "type": "multiple-choice",
+          "options": ["Grow very fast", "Stay the same", "Decay (get smaller)", "Create a straight line"],
+          "correct": 2,
+          "explanation": "When the base b is between 0 and 1, the function decays — it gets smaller and smaller as x increases."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Is y = 4ˣ an exponential function? Why or why not?",
+          "hint": "Look at where the variable x is sitting in the equation y = 4ˣ.",
+          "answer": "Yes! Because x is in the exponent position (top-right of 4). The base is 4 (greater than 1), so it is an exponential GROWTH function.",
+          "steps": [
+            "Find x in the equation y = 4ˣ",
+            "x is the tiny floating number at the top-right → exponent position",
+            "Base = 4, which is greater than 1",
+            "Therefore: YES, it is exponential and it GROWS as x increases!"
+          ]
+        },
+        {
+          "question": "Calculate: y = 2⁵",
+          "hint": "Write it as repeated multiplication first: 2 × 2 × 2 × 2 × 2",
+          "answer": "y = 32",
+          "steps": [
+            "Write as repeated multiplication: 2⁵ = 2 × 2 × 2 × 2 × 2",
+            "2 × 2 = 4",
+            "4 × 2 = 8",
+            "8 × 2 = 16",
+            "16 × 2 = 32",
+            "Answer: y = 32"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "evaluating-exponential-equations",
+      "title": "Evaluating & Finding Exponential Equations",
+      "icon": "🔢",
+      "summary": "Learn to calculate exponential values and build your own equations from real starting data.",
+      "color": "#5BA85A",
+      "graphType": "exponential",
+      "explanation": "Evaluating an exponential function just means finding the y-value when you are given a specific x. You simply replace x with your number and calculate. Finding the equation means working backwards — if you know how something starts and how fast it multiplies, you can write the exponential equation for it using the general form y = a · bˣ, where a is the starting value and b is the growth factor.",
+      "keyIdea": "Replace x with your given number and calculate. To write an equation, identify the starting value (a) and the growth factor (b).",
+      "formula": "y = a · bˣ   (a = starting value, b = growth factor)",
+      "steps": [
+        "Write down the function.",
+        "Identify the x value you are given.",
+        "Replace every x in the equation with that number.",
+        "Calculate the exponent part first.",
+        "Then multiply by the starting value (a) if present.",
+        "That is your answer!"
+      ],
+      "dailyExample": {
+        "title": "A Savings Account That Doubles",
+        "story": "You deposit $1,000 in a bank account that doubles every year. The equation is: Money = 1000 × 2ᵗ. After 3 years, you calculate: 1000 × 2³ = 1000 × 8 = $8,000! Not bad for just waiting!",
+        "table": [
+          { "label": "Year 0", "value": "$1,000" },
+          { "label": "Year 1", "value": "$2,000" },
+          { "label": "Year 2", "value": "$4,000" },
+          { "label": "Year 3", "value": "$8,000" }
+        ]
+      },
+      "bioExample": {
+        "title": "Bacteria Count",
+        "story": "A lab experiment starts with 10 bacteria cells that double every hour. We write the equation as N = 10 × 2ᵗ. After 4 hours: N = 10 × 2⁴ = 10 × 16 = 160 bacteria cells!",
+        "table": [
+          { "label": "Hour 0", "value": "10 cells" },
+          { "label": "Hour 1", "value": "20 cells" },
+          { "label": "Hour 2", "value": "40 cells" },
+          { "label": "Hour 4", "value": "160 cells" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "Bacteria start at 20 cells and double every hour. Write the equation, then find the count after 3 hours.",
+        "steps": [
+          { "step": 1, "text": "Identify the starting value (what is the count at time 0?)", "math": "a = 20" },
+          { "step": 2, "text": "Identify the growth factor (doubles means ×2 each hour)", "math": "b = 2" },
+          { "step": 3, "text": "Write the equation using y = a · bˣ", "math": "N = 20 × 2ᵗ" },
+          { "step": 4, "text": "Substitute t = 3 (for 3 hours)", "math": "N = 20 × 2³" },
+          { "step": 5, "text": "Calculate 2³ = 2 × 2 × 2", "math": "2³ = 8" },
+          { "step": 6, "text": "Multiply the starting value by 8", "math": "N = 20 × 8 = 160" }
+        ],
+        "answer": "After 3 hours, there are 160 bacteria cells."
+      },
+      "tips": [
+        "The starting value (a) is always the y-value when x = 0.",
+        "If something doubles, b = 2. If it triples, b = 3. If it grows to 150% each time, b = 1.5.",
+        "Memory trick: y = a · bˣ — the 'a' is what you start with, 'b' is what you multiply by each time step."
+      ],
+      "mistakes": [
+        "Do not add when you should multiply! A growth factor means multiplication, not addition.",
+        "The exponent applies only to b. In 10 × 2³, only the 2 is raised to power 3 — not the 10."
+      ],
+      "didYouKnow": "Epidemiologists used equations like N = a · bˣ to track COVID-19 spread worldwide. Knowing the starting number and doubling time, they could predict how many cases to expect weeks in advance!",
+      "quiz": [
+        {
+          "question": "In y = 5 × 3ˣ, what is the starting value (a)?",
+          "type": "multiple-choice",
+          "options": ["3", "x", "5", "15"],
+          "correct": 2,
+          "explanation": "The starting value (a) is 5. It is the number being multiplied by the exponential part 3ˣ."
+        },
+        {
+          "question": "Evaluate y = 2ˣ when x = 4",
+          "type": "multiple-choice",
+          "options": ["8", "16", "24", "12"],
+          "correct": 1,
+          "explanation": "y = 2⁴ = 2 × 2 × 2 × 2 = 16"
+        },
+        {
+          "question": "A population starts at 100 and triples each year. What is the equation?",
+          "type": "multiple-choice",
+          "options": ["y = 3 × 100ˣ", "y = 100 + 3x", "y = 100 × 3ˣ", "y = 100 × x³"],
+          "correct": 2,
+          "explanation": "Starting value a = 100, growth factor b = 3 (triples). So the equation is y = 100 × 3ˣ."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Evaluate f(x) = 4ˣ when x = 3",
+          "hint": "Write 4³ as repeated multiplication: 4 × 4 × 4",
+          "answer": "64",
+          "steps": [
+            "Substitute x = 3: f(3) = 4³",
+            "Write as multiplication: 4³ = 4 × 4 × 4",
+            "4 × 4 = 16",
+            "16 × 4 = 64",
+            "Answer: f(3) = 64"
+          ]
+        },
+        {
+          "question": "A virus starts with 5 infected cells and doubles every day. Write the equation.",
+          "hint": "Use y = a × bˣ where a is starting value and b is the growth factor (what does 'doubles' mean?).",
+          "answer": "y = 5 × 2ˣ",
+          "steps": [
+            "Starting value: a = 5 (we start with 5 infected cells)",
+            "Doubling means multiplying by 2 each time: b = 2",
+            "Use the formula y = a × bˣ",
+            "Equation: y = 5 × 2ˣ"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "compound-interest-continuous-growth",
+      "title": "Compound Interest & Continuous Growth",
+      "icon": "💰",
+      "summary": "See how banks grow your money step by step, and discover the magic number 'e' used in all of nature.",
+      "color": "#E8A838",
+      "graphType": "exponential",
+      "explanation": "Banks use exponential functions to grow your money. Compound interest means your interest earns MORE interest — you earn on your original deposit AND on the interest already earned. The math constant 'e' (approximately 2.718) describes continuous growth — things that grow non-stop every single second, like living organisms and chemical reactions. Compound interest happens in steps (monthly, yearly). Continuous growth happens every moment.",
+      "keyIdea": "Use A = P(1+r)ᵗ for step-by-step compound growth. Use A = Peʳᵗ for smooth, non-stop continuous growth.",
+      "formula": "Compound: A = P(1+r)ᵗ  |  Continuous: A = P·eʳᵗ",
+      "steps": [
+        "Identify the type: Is it step-by-step (compounded) or non-stop (continuous)?",
+        "For compound interest: use A = P(1 + r)ᵗ",
+        "  • P = Principal (the starting money you deposit)",
+        "  • r = interest rate as a decimal (5% → 0.05, 8% → 0.08)",
+        "  • t = time in years",
+        "  • A = the final total amount",
+        "For continuous growth: use A = P × eʳᵗ",
+        "  • e is a fixed constant ≈ 2.718 (like π = 3.14, it never changes)",
+        "Convert the percentage to decimal, then plug in and calculate."
+      ],
+      "dailyExample": {
+        "title": "Bank Account Growth",
+        "story": "Compound interest is like a paycheck — your bank gives you interest once a month. Continuous growth is like your hair growing — it does not suddenly sprout an inch on the last day of the month. It grows every single second! Example: Deposit $1,000 at 10% annual interest. After 2 years: A = 1000 × (1.10)² = 1000 × 1.21 = $1,210.",
+        "table": [
+          { "label": "Principal P", "value": "$1,000" },
+          { "label": "Rate r", "value": "10% = 0.10" },
+          { "label": "After 1 year", "value": "$1,100" },
+          { "label": "After 2 years", "value": "$1,210" }
+        ]
+      },
+      "bioExample": {
+        "title": "Continuous Biochemical Breakdown",
+        "story": "The breakdown of glucose in a solution does not happen in sudden bursts — it decomposes smoothly every fraction of a second. Scientists use base e to model this because e represents perfect, non-stop change. Enzyme reaction rates in biochemistry labs regularly use the formula A = Peʳᵗ.",
+        "table": [
+          { "label": "Type of change", "value": "Continuous" },
+          { "label": "Formula used", "value": "A = P × eʳᵗ" },
+          { "label": "What is e?", "value": "≈ 2.718 (a fixed constant)" },
+          { "label": "Why e?", "value": "It describes every-moment non-stop growth" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "You deposit $500 at 8% annual compound interest. How much do you have after 3 years?",
+        "steps": [
+          { "step": 1, "text": "Identify all values from the problem", "math": "P = 500,  r = 8% = 0.08,  t = 3" },
+          { "step": 2, "text": "Write the compound interest formula", "math": "A = P(1 + r)ᵗ" },
+          { "step": 3, "text": "Substitute the values", "math": "A = 500 × (1 + 0.08)³" },
+          { "step": 4, "text": "Simplify inside the brackets", "math": "A = 500 × (1.08)³" },
+          { "step": 5, "text": "Calculate (1.08)³ ≈ 1.08 × 1.08 × 1.08", "math": "(1.08)³ ≈ 1.2597" },
+          { "step": 6, "text": "Multiply to get the final amount", "math": "A = 500 × 1.2597 ≈ $629.86" }
+        ],
+        "answer": "After 3 years, you have approximately $629.86"
+      },
+      "tips": [
+        "Always convert percentage to decimal FIRST: 8% → 0.08, 5% → 0.05 (divide by 100).",
+        "The letter 'e' is NOT a variable like x! It is a fixed number: e ≈ 2.718. Like π (pi), it never changes.",
+        "Continuous growth using e will always give slightly MORE money than compound interest with the same rate."
+      ],
+      "mistakes": [
+        "Do not use r = 8 when the rate is 8%. Always divide by 100 first: r = 0.08.",
+        "Do not confuse e (the math constant 2.718) with a variable you need to solve for. They look different!"
+      ],
+      "didYouKnow": "The number e was discovered by mathematician Jacob Bernoulli in 1683 while studying compound interest. He noticed a magical limit keeps appearing: as you compound more and more often, you approach e = 2.718...",
+      "quiz": [
+        {
+          "question": "In A = P(1+r)ᵗ, what does P stand for?",
+          "type": "multiple-choice",
+          "options": ["Percentage  ", "Principal (starting money)", "Power", "Period"],
+          "correct": 1,
+          "explanation": "P is the Principal — the starting amount of money you deposit before any interest is added."
+        },
+        {
+          "question": "What is the approximate value of e?",
+          "type": "multiple-choice",
+          "options": ["3.14", "2.718", "1.618", "2.0"],
+          "correct": 1,
+          "explanation": "e ≈ 2.718. It is a special math constant that appears everywhere in nature, just like π ≈ 3.14159."
+        },
+        {
+          "question": "An 8% annual rate written as a decimal for the formula is:",
+          "type": "multiple-choice",
+          "options": ["8", "0.8", "0.08", "80"],
+          "correct": 2,
+          "explanation": "To convert a percentage to a decimal: divide by 100. So 8% ÷ 100 = 0.08."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Calculate: $1,000 deposited at 5% annual compound interest for 2 years. Use A = P(1+r)ᵗ.",
+          "hint": "P = 1000, r = 5% = 0.05, t = 2. Substitute into A = 1000 × (1.05)²",
+          "answer": "$1,102.50",
+          "steps": [
+            "Identify: P = 1000, r = 0.05, t = 2",
+            "Formula: A = P(1 + r)ᵗ",
+            "Substitute: A = 1000 × (1.05)²",
+            "Calculate: (1.05)² = 1.05 × 1.05 = 1.1025",
+            "Multiply: A = 1000 × 1.1025 = $1,102.50"
+          ]
+        },
+        {
+          "question": "What is e¹? (Remember: e ≈ 2.718)",
+          "hint": "Any number raised to the power of 1 equals itself.",
+          "answer": "e¹ = e ≈ 2.718",
+          "steps": [
+            "Any number to the power of 1 equals itself: n¹ = n",
+            "So e¹ = e",
+            "And e ≈ 2.718",
+            "Answer: e¹ ≈ 2.718"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "graphing-exponential-functions",
+      "title": "Graphing Exponential Functions",
+      "icon": "📊",
+      "summary": "Draw and shift exponential curves on a graph — and understand what each part of the graph means.",
+      "color": "#9B59B6",
+      "graphType": "exponential",
+      "explanation": "Graphing an exponential function means drawing its picture on a grid. Exponential graphs look exactly like a skateboard ramp — very flat at first on the left side, then suddenly shooting straight up into the sky on the right. To draw one, you pick a few x values, calculate the y values, plot the dots, and connect them with a smooth curve. Transformations (adding or subtracting numbers) slide that curve up, down, left, or right.",
+      "keyIdea": "Exponential graphs rocket upward and NEVER touch the x-axis. Adding a number (+k) slides the whole graph UP by k units.",
+      "formula": "y = bˣ  (basic shape)  |  y = bˣ + k  (shift up/down)  |  y = b⁽ˣ⁻ʰ⁾  (shift left/right)",
+      "steps": [
+        "Choose 4–5 easy x values: -2, -1, 0, 1, 2 work great.",
+        "Calculate y for each x value using your equation.",
+        "Write all (x, y) pairs in a neat table.",
+        "Plot each point as a dot on the graph grid.",
+        "Connect all dots with a smooth curved line — no sharp corners!",
+        "Remember: the curve NEVER actually touches the x-axis (it just gets very close)."
+      ],
+      "dailyExample": {
+        "title": "Tracking a Puppy's Weight",
+        "story": "If you weigh a puppy each week and mark the dot on a chart, then connect all the dots — that picture IS the graph! When the puppy grows fast as a baby, the dots shoot up. When the puppy is an adult and growth slows, the dots level off. An exponential curve shows that fast early growth.",
+        "table": [
+          { "label": "x = -1", "value": "y = 0.5" },
+          { "label": "x = 0",  "value": "y = 1" },
+          { "label": "x = 1",  "value": "y = 2" },
+          { "label": "x = 2",  "value": "y = 4" },
+          { "label": "x = 3",  "value": "y = 8" }
+        ]
+      },
+      "bioExample": {
+        "title": "Virus Replication Curve",
+        "story": "Scientists graph the number of virus cells over time during an infection. The graph starts almost flat (early infection — very few cells), then suddenly curves sharply upward (exponential explosion of viral cells). This classic J-shaped curve is the signature shape in biology textbooks.",
+        "table": [
+          { "label": "Early days", "value": "Graph is nearly flat" },
+          { "label": "Middle days", "value": "Curve begins to rise" },
+          { "label": "Later days", "value": "Shoots straight up!" },
+          { "label": "Shape name", "value": "J-curve (exponential)" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "Compare y = 2ˣ and y = 2ˣ + 3. How does the second graph differ from the first?",
+        "steps": [
+          { "step": 1, "text": "Build a value table for y = 2ˣ", "math": "x: -1, 0, 1, 2  →  y: 0.5, 1, 2, 4" },
+          { "step": 2, "text": "Build a value table for y = 2ˣ + 3", "math": "x: -1, 0, 1, 2  →  y: 3.5, 4, 5, 7" },
+          { "step": 3, "text": "Compare — every y-value in the second table is exactly 3 more", "math": "3.5 = 0.5 + 3,   4 = 1 + 3,  etc." },
+          { "step": 4, "text": "Conclusion: adding +3 shifts the ENTIRE graph upward by 3 units", "math": "Same shape, different vertical position" }
+        ],
+        "answer": "y = 2ˣ + 3 is the same curve as y = 2ˣ, but shifted UP by 3 units."
+      },
+      "tips": [
+        "Every y = bˣ graph always passes through the point (0, 1) because b⁰ = 1 for any base.",
+        "Adding a number at the end (like +3 or -2) moves the entire graph UP or DOWN by that number.",
+        "If the base is less than 1 (like y = 0.5ˣ), the graph falls from left to right — that is exponential decay."
+      ],
+      "mistakes": [
+        "The curve NEVER actually touches the x-axis, even though it looks like it does. It just keeps getting very close. Mathematicians call this a 'horizontal asymptote'.",
+        "Do not draw sharp corners on exponential graphs — they are always smooth, gentle curves!"
+      ],
+      "didYouKnow": "The x-axis acts like an invisible wall that the exponential curve approaches forever but never crosses. Mathematicians give this wall a name: it is called a 'horizontal asymptote'!",
+      "quiz": [
+        {
+          "question": "What point does EVERY y = bˣ graph always pass through?",
+          "type": "multiple-choice",
+          "options": ["(1, 0)", "(0, 0)", "(0, 1)", "(1, 1)"],
+          "correct": 2,
+          "explanation": "When x = 0, bˣ = b⁰ = 1 for any base b. So the graph always passes through (0, 1)."
+        },
+        {
+          "question": "The graph of y = 3ˣ + 5 compared to y = 3ˣ is shifted:",
+          "type": "multiple-choice",
+          "options": ["Right 5 units", "Left 5 units", "Down 5 units", "Up 5 units"],
+          "correct": 3,
+          "explanation": "Adding +5 at the end of the equation moves the entire graph UP by 5 units."
+        },
+        {
+          "question": "An exponential graph with base 0 < b < 1 (like 0.5ˣ) shows:",
+          "type": "multiple-choice",
+          "options": ["Exponential growth", "A straight line", "Exponential decay", "A circle"],
+          "correct": 2,
+          "explanation": "When the base b is between 0 and 1, the y values decrease as x increases. That is exponential decay!"
+        }
+      ],
+      "practice": [
+        {
+          "question": "Fill in the table for y = 3ˣ when x = 0, 1, 2",
+          "hint": "Calculate 3⁰, 3¹, and 3² separately. Remember: any number to power 0 is 1.",
+          "answer": "y = 1, y = 3, y = 9",
+          "steps": [
+            "x = 0: y = 3⁰ = 1  (anything to power 0 is 1)",
+            "x = 1: y = 3¹ = 3",
+            "x = 2: y = 3² = 3 × 3 = 9",
+            "Table: (0, 1), (1, 3), (2, 9)"
+          ]
+        },
+        {
+          "question": "How does y = 2ˣ − 4 differ from y = 2ˣ on a graph?",
+          "hint": "Look at the − 4 at the end of the equation. What direction does subtracting move the graph?",
+          "answer": "The graph shifts DOWN by 4 units",
+          "steps": [
+            "Identify the transformation: −4 at the end",
+            "Subtracting a number at the end shifts the graph DOWN",
+            "The shape stays exactly the same",
+            "Every y-value is 4 less than in y = 2ˣ",
+            "Graph moves DOWN 4 units"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "what-is-a-logarithm",
+      "title": "What is a Logarithm?",
+      "icon": "🔍",
+      "summary": "Logarithms are the reverse of exponential functions — they help you find a hidden exponent.",
+      "color": "#E74C3C",
+      "graphType": "logarithmic",
+      "explanation": "A logarithm (or 'log' for short) is a backwards question. If an exponential says '2 multiplied by itself 3 times gives 8', then a logarithm asks 'How many times must I multiply 2 to GET 8?' It is the exact reverse of an exponential. Think of it like paper folding: the exponential question is 'if I fold 3 times, how many layers?' (Answer: 8). The logarithm question is 'if I want 8 layers, how many folds?' (Answer: 3 folds).",
+      "keyIdea": "A logarithm asks: 'The base needs what POWER to equal the target number?'",
+      "formula": "log_b(a) = c  means  b^c = a",
+      "steps": [
+        "Read the logarithm: log base b of a equals c.",
+        "Use the LOOP TRICK: draw a circle starting at the tiny base number...",
+        "...arc across the equals sign to the answer (c)...",
+        "...and back inside to the target number (a).",
+        "Rewrite as an exponent: base^answer = target, or b^c = a.",
+        "Ask yourself: 'b raised to what power gives a?'",
+        "That power is your answer!"
+      ],
+      "dailyExample": {
+        "title": "Paper Folding",
+        "story": "Fold a paper once → 2 layers. Fold it twice → 4 layers. Fold it 3 times → 8 layers. Now flip the question: 'If I have 8 layers, how many times did I fold?' That reverse question is EXACTLY what a logarithm does! log₂(8) = 3 means: 'starting from 2, how many times to fold to get 8?' Answer: 3 folds.",
+        "table": [
+          { "label": "1 fold", "value": "2 layers" },
+          { "label": "2 folds", "value": "4 layers" },
+          { "label": "3 folds", "value": "8 layers" },
+          { "label": "log₂(8) = ?", "value": "Answer: 3 folds!" }
+        ]
+      },
+      "bioExample": {
+        "title": "Bacteria Doubling — Working Backwards",
+        "story": "You start with 1 bacteria cell. Some time later, you count 16 cells in the petri dish. How many doubling cycles happened? A logarithm answers this! log₂(16) = 4. So exactly 4 doubling cycles occurred. Logarithms let you find TIME from a count.",
+        "table": [
+          { "label": "Starting count", "value": "1 cell" },
+          { "label": "Ending count", "value": "16 cells" },
+          { "label": "Question asked", "value": "How many doublings?" },
+          { "label": "log₂(16) =", "value": "4 doublings" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "Evaluate: log₂(8) = x. Find x.",
+        "steps": [
+          { "step": 1, "text": "Identify the parts: base = 2, target = 8, answer = x", "math": "log₂(8) = x" },
+          { "step": 2, "text": "Use the Loop Trick — rewrite as an exponent", "math": "2ˣ = 8" },
+          { "step": 3, "text": "Ask: 2 multiplied how many times gives 8?", "math": "2 × 2 = 4,   and   4 × 2 = 8" },
+          { "step": 4, "text": "Count how many 2s multiplied together: three 2s!", "math": "2³ = 8  ✓" }
+        ],
+        "answer": "x = 3"
+      },
+      "tips": [
+        "log(x) with NO tiny base number written means base 10 — it is called the 'Common Log'.",
+        "ln(x) means 'Natural Log' — the invisible base is secretly e (≈ 2.718).",
+        "Logs undo exponents, and exponents undo logs — they are mathematical opposites, like multiplication and division!"
+      ],
+      "mistakes": [
+        "log₂(8) does NOT mean 2 × 8 = 16 or 2 + 8 = 10. It asks: '2 to what power equals 8?'",
+        "Do not confuse the base with the answer. In log₂(8) = 3, the base is 2, not 3."
+      ],
+      "didYouKnow": "The pH scale in chemistry — which measures acidity — is logarithmic! A pH of 3 is 10 times more acidic than pH 4, and 100 times more acidic than pH 5. Stomach acid (pH ≈ 2) is 100,000 times more acidic than pure water (pH 7)!",
+      "quiz": [
+        {
+          "question": "What does log₂(8) ask?",
+          "type": "multiple-choice",
+          "options": ["What is 2 × 8?", "What is 2 + 8?", "2 to what power equals 8?", "8 divided by 2?"],
+          "correct": 2,
+          "explanation": "log₂(8) asks: '2 raised to what power equals 8?' The answer is 3, because 2³ = 8."
+        },
+        {
+          "question": "Convert log₅(25) = 2 to exponential form:",
+          "type": "multiple-choice",
+          "options": ["25⁵ = 2", "2⁵ = 25", "5² = 25", "5²⁵ = 2"],
+          "correct": 2,
+          "explanation": "Using the rule: log_b(a) = c means b^c = a. So log₅(25) = 2 becomes 5² = 25."
+        },
+        {
+          "question": "What is the base of ln(x) — the natural logarithm?",
+          "type": "multiple-choice",
+          "options": ["10", "2", "e (≈ 2.718)", "100"],
+          "correct": 2,
+          "explanation": "ln(x) is the natural logarithm. Its invisible base is e ≈ 2.718, the same special constant used in continuous growth!"
+        }
+      ],
+      "practice": [
+        {
+          "question": "Evaluate: log₃(9) = ?",
+          "hint": "Rewrite as an exponent: 3^? = 9. Then ask yourself: 3 multiplied how many times gives 9?",
+          "answer": "2",
+          "steps": [
+            "Rewrite using the Loop Trick: 3ˣ = 9",
+            "Ask: 3 multiplied how many times gives 9?",
+            "3 × 3 = 9 → that is two 3s multiplied together",
+            "So 3² = 9, therefore log₃(9) = 2"
+          ]
+        },
+        {
+          "question": "Convert to exponential form: log₁₀(100) = 2",
+          "hint": "Use the rule: log_b(a) = c means b^c = a. Identify b, a, and c first.",
+          "answer": "10² = 100",
+          "steps": [
+            "Identify parts: base b = 10, target a = 100, answer c = 2",
+            "Apply the rule: b^c = a",
+            "Rewrite: 10² = 100",
+            "Check: 10 × 10 = 100 ✓"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "evaluating-logarithms",
+      "title": "Evaluating Logarithms",
+      "icon": "🧮",
+      "summary": "Solve common logs (base 10) and natural logs (base e) — tools used in science every day.",
+      "color": "#1ABC9C",
+      "graphType": "logarithmic",
+      "explanation": "Evaluating a logarithm means calculating the answer. There are two special types you will see very often: the Common Log (written as log, base 10) and the Natural Log (written as ln, base e ≈ 2.718). Common logs appear in science measurements like pH, earthquake magnitude (Richter scale), and sound decibels. Natural logs appear in biology, chemistry, and any problem involving continuous growth or decay.",
+      "keyIdea": "log(x) means log₁₀(x). ln(x) means logₑ(x). Both are solved by asking: 'base to what power equals x?'",
+      "formula": "log(x) = log₁₀(x)  |  ln(x) = logₑ(x)  |  ln(eⁿ) = n",
+      "steps": [
+        "Step 1: Identify the type — is it log (base 10) or ln (base e)?",
+        "Step 2: Set up the question: 'base to what power equals my target number?'",
+        "Step 3: For log: ask 'what power of 10 gives my number?'",
+        "Step 4: For ln: ask 'what power of e gives my number?'",
+        "Step 5: For easy numbers like log(100), count the zeros: log(100) = 2.",
+        "Step 6: For harder numbers, use a calculator."
+      ],
+      "dailyExample": {
+        "title": "Sound Decibels Scale",
+        "story": "The decibel scale for sound uses base-10 logarithms. A sound 10× louder than another goes up by just 10 decibels on the scale. A rock concert (120 dB) compared to a library (40 dB) is a difference of 80 dB, which means the concert is 10⁸ = 100 million times louder! Logarithms make these huge numbers manageable.",
+        "table": [
+          { "label": "log(1)", "value": "= 0  (10⁰ = 1)" },
+          { "label": "log(10)", "value": "= 1  (10¹ = 10)" },
+          { "label": "log(100)", "value": "= 2  (10² = 100)" },
+          { "label": "log(1000)", "value": "= 3  (10³ = 1000)" }
+        ]
+      },
+      "bioExample": {
+        "title": "The pH Scale",
+        "story": "pH measures how acidic a solution is, using negative base-10 logarithms of hydrogen ion concentration. Blood must stay at pH 7.4. Stomach acid is at pH 2. That is a difference of 5.4 on the log scale, meaning stomach acid has over 250,000 times more hydrogen ions than blood! Logarithms turn unimaginably small concentrations into easy numbers.",
+        "table": [
+          { "label": "Stomach acid", "value": "pH ≈ 2  (very acidic)" },
+          { "label": "Water (neutral)", "value": "pH = 7" },
+          { "label": "Blood", "value": "pH ≈ 7.4" },
+          { "label": "Each pH unit", "value": "= 10× difference in acidity" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "Evaluate: log(1000) and ln(e³)",
+        "steps": [
+          { "step": 1, "text": "For log(1000): ask what power of 10 gives 1000?", "math": "10^? = 1000" },
+          { "step": 2, "text": "Count: 10 × 10 × 10 = 1000 — that is three 10s", "math": "10³ = 1000" },
+          { "step": 3, "text": "First answer", "math": "log(1000) = 3" },
+          { "step": 4, "text": "For ln(e³): ln and e are mathematical opposites — they cancel each other out!", "math": "ln(e³) = 3" }
+        ],
+        "answer": "log(1000) = 3  and  ln(e³) = 3"
+      },
+      "tips": [
+        "Quick trick: log(100) = 2, log(1000) = 3, log(10000) = 4 — just count the zeros!",
+        "ln(e) = 1, ln(e²) = 2, ln(e³) = 3 — the exponent comes straight down as the answer.",
+        "ln and e are opposites: ln(eˣ) = x always, and e^(ln x) = x always."
+      ],
+      "mistakes": [
+        "log(100) ≠ 2 × 100 = 200. It equals 2 because 10² = 100.",
+        "NEVER take the log of zero or a negative number. Logs only work on positive numbers (x > 0)!"
+      ],
+      "didYouKnow": "The Richter scale for earthquakes uses base-10 logarithms too! A magnitude 6 earthquake is 10 times more powerful than a magnitude 5, and 100 times more powerful than a magnitude 4. One simple number on the scale = enormous differences in actual power!",
+      "quiz": [
+        {
+          "question": "What is log(10)?",
+          "type": "multiple-choice",
+          "options": ["0", "10", "1", "100"],
+          "correct": 2,
+          "explanation": "log(10) = log₁₀(10) = 1, because 10¹ = 10."
+        },
+        {
+          "question": "What is ln(e²)?",
+          "type": "multiple-choice",
+          "options": ["e", "2e", "2", "e²"],
+          "correct": 2,
+          "explanation": "ln and e cancel each other: ln(eⁿ) = n. So ln(e²) = 2."
+        },
+        {
+          "question": "What is log(10,000)?",
+          "type": "multiple-choice",
+          "options": ["1", "3", "4", "10"],
+          "correct": 2,
+          "explanation": "log(10,000) = 4 because 10⁴ = 10,000. Count the zeros: four zeros → answer is 4."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Find: log(100,000)",
+          "hint": "Ask: 10 to what power equals 100,000? Try counting the zeros.",
+          "answer": "5",
+          "steps": [
+            "Ask: 10^? = 100,000",
+            "Count the zeros in 100,000: there are five zeros",
+            "So 10⁵ = 100,000",
+            "Therefore: log(100,000) = 5"
+          ]
+        },
+        {
+          "question": "Find: ln(e⁷)",
+          "hint": "Remember: ln and e are mathematical opposites. They cancel each other out.",
+          "answer": "7",
+          "steps": [
+            "ln(eˣ) = x is the rule — ln and e cancel perfectly",
+            "ln(e⁷) asks: e to what power gives e⁷?",
+            "The answer is right there: the power is 7",
+            "ln(e⁷) = 7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "graphing-logarithmic-functions",
+      "title": "Graphing Logarithmic Functions",
+      "icon": "📉",
+      "summary": "Draw log graphs (the mirror of exponential) and learn the domain rule — the most important log rule!",
+      "color": "#D35400",
+      "graphType": "logarithmic",
+      "explanation": "Logarithmic graphs look like a hill — they rise quickly at first, then slow down and flatten out as you move to the right. They are the mirror image of exponential graphs, reflected across the diagonal line y = x. There is one crucial rule you must always remember: you can ONLY take the logarithm of a POSITIVE number. This means the domain (allowed x values) for any log function is always x > 0, or x greater than whatever is subtracted inside.",
+      "keyIdea": "Log graphs flatten toward the right and NEVER cross the y-axis. The inside of the log must ALWAYS be positive. That is the domain rule.",
+      "formula": "y = log_b(x)  |  y = log_b(x) + k  shifts up/down  |  y = log_b(x − h)  shifts right by h, domain: x > h",
+      "steps": [
+        "To graph: choose x values that give easy log results (1, 10, 100 for base-10 log).",
+        "Calculate y for each x and build a value table.",
+        "Plot the points and connect with a smooth curve that flattens to the right.",
+        "Remember: the curve NEVER crosses the y-axis (x = 0 is a vertical asymptote).",
+        "To find the domain: look inside the log, set that expression > 0, and solve."
+      ],
+      "dailyExample": {
+        "title": "The Learning Curve",
+        "story": "When you learn something new — like playing guitar — you improve enormously in the first few weeks. But after months of practice, each improvement takes longer and longer to achieve. Your progress slows down but never completely stops. That flattening-out pattern on a graph is exactly what a logarithmic function looks like!",
+        "table": [
+          { "label": "x = 1",    "value": "y = 0" },
+          { "label": "x = 10",   "value": "y = 1" },
+          { "label": "x = 100",  "value": "y = 2" },
+          { "label": "x = 1000", "value": "y = 3" }
+        ]
+      },
+      "bioExample": {
+        "title": "Glucose Concentration Over Time",
+        "story": "When measuring how a reactant like glucose is used up in a chemical reaction, the concentration often drops quickly at first, then levels off. Plotting these measurements on a graph and connecting the dots gives you a logarithmic shape — rises fast, then flattens. This is a real graph type used in biochemistry labs.",
+        "table": [
+          { "label": "Early reaction", "value": "Rapid change (steep rise)" },
+          { "label": "Mid reaction", "value": "Slowing down" },
+          { "label": "Late reaction", "value": "Almost flat" },
+          { "label": "y-axis", "value": "Curve never crosses it" }
+        ]
+      },
+      "solvedProblem": {
+        "question": "Find the domain of y = log(x − 3)",
+        "steps": [
+          { "step": 1, "text": "Rule: the expression INSIDE the log must be greater than zero", "math": "x − 3 > 0" },
+          { "step": 2, "text": "Solve the inequality by adding 3 to both sides", "math": "x > 3" },
+          { "step": 3, "text": "Write the domain", "math": "Domain: x > 3" },
+          { "step": 4, "text": "Bonus: the graph shifts 3 units to the RIGHT, and the vertical asymptote moves to x = 3", "math": "Vertical wall is now at x = 3" }
+        ],
+        "answer": "Domain: x > 3"
+      },
+      "tips": [
+        "Log graphs always pass through (1, 0) when there is no transformation, because log_b(1) = 0 for any base.",
+        "Adding a number at the end (like +2) shifts the graph UP by that much.",
+        "If the inside is (x − h), the graph shifts RIGHT by h units and the domain becomes x > h."
+      ],
+      "mistakes": [
+        "You CANNOT take the log of 0 or a negative number — ever! Always check and write the domain first.",
+        "Shifting direction trick: y = log(x − 3) shifts RIGHT by 3 (not left). The minus sign moves it RIGHT, which feels backwards!"
+      ],
+      "didYouKnow": "Logarithmic spirals appear throughout nature — in nautilus shells, sunflower seed arrangements, hurricane cloud patterns, and even spiral galaxies! These natural shapes follow logarithmic mathematics, making log functions one of the most beautiful in all of math.",
+      "quiz": [
+        {
+          "question": "What is the domain of y = log(x)?",
+          "type": "multiple-choice",
+          "options": ["All real numbers", "x > 0", "x ≥ 0", "x < 0"],
+          "correct": 1,
+          "explanation": "You can only take the log of a positive number. So the domain is x > 0. Zero itself is NOT allowed!"
+        },
+        {
+          "question": "The graph y = log(x) + 4 compared to y = log(x) is shifted:",
+          "type": "multiple-choice",
+          "options": ["Right 4 units", "Left 4 units", "Up 4 units", "Down 4 units"],
+          "correct": 2,
+          "explanation": "Adding +4 at the END of the equation shifts the graph UP by 4 units."
+        },
+        {
+          "question": "What is the domain of y = log(x − 5)?",
+          "type": "multiple-choice",
+          "options": ["x > 0", "x > 5", "x > −5", "All numbers"],
+          "correct": 1,
+          "explanation": "Set the inside > 0: x − 5 > 0, which gives x > 5. Only values GREATER than 5 are allowed."
+        }
+      ],
+      "practice": [
+        {
+          "question": "Find the domain of y = log(x + 2)",
+          "hint": "Set the expression inside the log (which is x + 2) greater than 0, then solve for x.",
+          "answer": "x > −2",
+          "steps": [
+            "Rule: inside of log must be > 0",
+            "Set up: x + 2 > 0",
+            "Solve: subtract 2 from both sides: x > −2",
+            "Domain: x > −2  (all x values greater than negative 2)"
+          ]
+        },
+        {
+          "question": "For y = log₁₀(x), what is y when x = 1,000?",
+          "hint": "Ask: 10 to what power equals 1,000? Count the zeros.",
+          "answer": "y = 3",
+          "steps": [
+            "y = log₁₀(1000)",
+            "Ask: 10^? = 1000",
+            "Count the zeros: three zeros in 1000",
+            "10³ = 1000",
+            "So y = 3"
+          ]
+        }
+      ]
+    }
+  ]
+}
