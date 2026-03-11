@@ -66,7 +66,12 @@ function renderQuestion() {
     </button>`).join('');
 
   // Hide explanation and disable Next until answered
-  showEl('quizExplanation', false);
+  const expBox = document.getElementById('quizExplanation');
+  if (expBox) {
+    expBox.classList.remove('show');
+    expBox.classList.add('hidden');
+    expBox.textContent = '';
+  }
   const nextBtn = document.getElementById('quizNextBtn');
   if (nextBtn) {
     nextBtn.disabled = true;
@@ -99,6 +104,7 @@ function selectOption(btnEl, chosenIdx) {
   const expBox = document.getElementById('quizExplanation');
   if (expBox) {
     expBox.textContent = (isCorrect ? '✅ Correct! ' : '❌ Not quite. ') + q.explanation;
+    expBox.classList.remove('hidden');
     expBox.classList.add('show');
     expBox.style.borderLeftColor = isCorrect ? 'var(--success)' : 'var(--error)';
   }
@@ -205,7 +211,7 @@ function buildReviewList() {
     <h4 style="margin-bottom:.75rem">📖 Review These Questions:</h4>
     ${wrong.map(r => {
       const q   = _quiz.questions[r.q];
-      const letters = ['A','B','C','D'];
+      const letters = ['A','B','C','D','E'];
       return `<div style="background:var(--surface-2);border-radius:8px;padding:.85rem;margin-bottom:.65rem;font-size:.9rem">
         <p style="font-weight:700;margin-bottom:.5rem">${escQ(q.question)}</p>
         <p style="color:var(--error)">❌ You chose: ${letters[r.chose]}. ${escQ(q.options[r.chose])}</p>

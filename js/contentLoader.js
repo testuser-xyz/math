@@ -362,31 +362,33 @@ async function renderPracticePage() {
     return;
   }
 
-  container.innerHTML = probs.map((p, i) => `
+  const letters = ['A', 'B', 'C', 'D', 'E'];
+  container.innerHTML = probs.map((p, i) => {
+    const isTF = String(p.type || '').toLowerCase() === 'true-false';
+    const options = Array.isArray(p.options) ? p.options : [];
+    return `
     <div class="practice-question-card animate-fadeInUp delay-${i % 3 + 1}">
-      <div class="practice-q-number">Practice Problem ${i + 1}</div>
+      <div class="practice-q-number">
+        Practice Question ${i + 1}
+        <span class="badge ${isTF ? 'badge-accent' : 'badge-primary'}" style="margin-left:.45rem">
+          ${isTF ? 'True/False' : 'MCQ'}
+        </span>
+      </div>
       <div class="practice-q-text">${esc(p.question)}</div>
-      <textarea class="practice-answer-input" id="ans-${i}" placeholder="Type your answer here…" rows="2"></textarea>
-      <div class="practice-controls">
-        <button class="btn btn-sm btn-primary" onclick="window.Module2.checkPracticeAnswer(${i})">✔ Check Answer</button>
-        <button class="btn btn-sm btn-secondary" onclick="window.Module2.toggleHint(${i})">💡 Show Hint</button>
-        <button class="btn btn-sm btn-accent"    onclick="window.Module2.toggleSteps(${i})">📋 Show Steps</button>
-      </div>
-      <div class="hint-box" id="hint-${i}">
-        <strong>💡 Hint:</strong> ${esc(p.hint)}
-      </div>
-      <div class="answer-steps" id="steps-${i}">
-        <strong>📋 Step-by-Step Solution:</strong>
-        <ol>${p.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
-        <div style="margin-top:.75rem;padding:.65rem 1rem;background:#eafaf1;border-left:3px solid var(--success);border-radius:6px;font-weight:700;color:var(--success)">
-          ✅ Answer: ${esc(p.answer)}
-        </div>
+      <div class="quiz-options" id="prac-options-${i}" role="group" aria-label="Practice options ${i + 1}">
+        ${options.map((opt, j) => `
+          <button class="quiz-option" data-idx="${j}" onclick="window.Module2.selectPracticeOption(${i}, ${j}, this)">
+            <span class="quiz-option-letter">${letters[j] || (j + 1)}</span>
+            <span>${esc(opt)}</span>
+          </button>`).join('')}
       </div>
       <div class="feedback-box" id="fb-${i}"></div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
-  // Store answers for checking
-  window.Module2._practiceAnswers = probs.map(p => p.answer);
+  // Store full practice questions for option-based checking
+  window.Module2._practiceQuestions = probs;
+  window.Module2._practiceAnswered = {};
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

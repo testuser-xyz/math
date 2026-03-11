@@ -134,6 +134,37 @@ function resetSteps() {
 }
 
 // ── Practice helpers ──────────────────────────────────────────────────────────
+function selectPracticeOption(qIdx, chosenIdx) {
+  const questions = window.Module2._practiceQuestions || [];
+  const q = questions[qIdx];
+  const fb = document.getElementById(`fb-${qIdx}`);
+  if (!q || !Array.isArray(q.options) || typeof q.correct !== 'number' || !fb) return;
+
+  // Reveal feedback only after a user selects an option.
+  window.Module2._practiceAnswered = window.Module2._practiceAnswered || {};
+  if (window.Module2._practiceAnswered[qIdx]) return;
+  window.Module2._practiceAnswered[qIdx] = true;
+
+  const wrap = document.getElementById(`prac-options-${qIdx}`);
+  if (wrap) {
+    wrap.querySelectorAll('.quiz-option').forEach((opt, i) => {
+      opt.disabled = true;
+      if (i === q.correct) opt.classList.add('correct');
+      if (i === chosenIdx && chosenIdx !== q.correct) opt.classList.add('wrong');
+      if (i === chosenIdx) opt.classList.add('selected');
+    });
+  }
+
+  const isCorrect = chosenIdx === q.correct;
+  const explanation = q.explanation ? ` ${esc(q.explanation)}` : '';
+  const correctAnswer = esc(q.options[q.correct] ?? '');
+
+  fb.className = 'feedback-box show ' + (isCorrect ? 'correct' : 'incorrect');
+  fb.innerHTML = isCorrect
+    ? `✅ <strong>Correct.</strong>${explanation}`
+    : `❌ <strong>Not correct.</strong> Correct answer: <strong>${correctAnswer}</strong>.${explanation}`;
+}
+
 function toggleHint(idx) {
   const box = document.getElementById(`hint-${idx}`);
   if (box) box.classList.toggle('show');
@@ -145,24 +176,8 @@ function toggleSteps(idx) {
 }
 
 function checkPracticeAnswer(idx) {
-  const input  = document.getElementById(`ans-${idx}`);
-  const fb     = document.getElementById(`fb-${idx}`);
-  const correct = (window.Module2._practiceAnswers || [])[idx];
-  if (!input || !fb || !correct) return;
-
-  const raw     = input.value.trim().toLowerCase();
-  const exp     = String(correct).toLowerCase();
-
-  // Flexible matching: check if key parts of the answer appear in their response
-  const expWords = exp.replace(/[^a-z0-9.><]/g,' ').split(/\s+/).filter(w => w.length > 1);
-  const matches  = expWords.filter(w => raw.includes(w)).length;
-  const pct      = expWords.length > 0 ? matches / expWords.length : 0;
-  const isCorrect = pct >= 0.5 || raw === exp || raw.includes(exp) || exp.includes(raw);
-
-  fb.className = 'feedback-box show ' + (isCorrect ? 'correct' : 'incorrect');
-  fb.innerHTML = isCorrect
-    ? `✅ <strong>Great job!</strong> That looks correct! ${esc(correct)}`
-    : `❌ <strong>Not quite.</strong> Try again, or click "Show Steps" to see the full solution.`;
+  // Legacy handler kept for compatibility with older markup.
+  showToast('Select an option to check your answer.', '');
 }
 
 // ── "Mark Complete" button on topic page ──────────────────────────────────────
@@ -268,6 +283,7 @@ Object.assign(window.Module2, {
   revealNextStep,
   revealAllSteps,
   resetSteps,
+  selectPracticeOption,
   toggleHint,
   toggleSteps,
   checkPracticeAnswer,
