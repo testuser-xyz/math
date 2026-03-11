@@ -123,12 +123,13 @@
         // Populate topic switcher and other-topics grid
         const topics  = await window.Module2.getAllTopics();
         const current = window.Module2.getParam('id');
+        const norm = window.Module2.normalizeDisplayText || ((v) => String(v ?? ''));
         const switcher = document.getElementById('topicSwitcher');
         const grid     = document.getElementById('otherTopicsGrid');
 
         if (switcher) {
           switcher.innerHTML = topics.map(t =>
-            `<option value="${t.id}" ${String(t.id) === current ? 'selected' : ''}>${t.icon} ${t.title}</option>`
+            `<option value="${t.id}" ${String(t.id) === current ? 'selected' : ''}>${norm(t.icon)} ${norm(t.title)}</option>`
           ).join('');
           switcher.addEventListener('change', () => {
             if (switcher.value) window.location.href = `practice.html?id=${switcher.value}`;
@@ -145,7 +146,7 @@
                       ${String(t.id) === current ? 'border-color:var(--primary);box-shadow:0 0 0 2px rgba(74,144,217,.2);' : ''}"
                onmouseover="this.style.borderColor='var(--primary)';this.style.background='var(--surface-2)'"
                onmouseout="this.style.borderColor='${String(t.id) === current ? 'var(--primary)' : 'var(--border)'}';this.style.background='var(--surface)'">
-              <span>${t.icon}</span> ${t.title}
+              <span>${norm(t.icon)}</span> ${norm(t.title)}
             </a>`).join('');
         }
 

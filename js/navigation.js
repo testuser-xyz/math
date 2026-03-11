@@ -140,6 +140,10 @@ function selectPracticeOption(qIdx, chosenIdx) {
   const fb = document.getElementById(`fb-${qIdx}`);
   if (!q || !Array.isArray(q.options) || typeof q.correct !== 'number' || !fb) return;
 
+  const fmt = (window.Module2 && typeof window.Module2.formatMathText === 'function')
+    ? window.Module2.formatMathText
+    : esc;
+
   // Reveal feedback only after a user selects an option.
   window.Module2._practiceAnswered = window.Module2._practiceAnswered || {};
   if (window.Module2._practiceAnswered[qIdx]) return;
@@ -156,8 +160,8 @@ function selectPracticeOption(qIdx, chosenIdx) {
   }
 
   const isCorrect = chosenIdx === q.correct;
-  const explanation = q.explanation ? ` ${esc(q.explanation)}` : '';
-  const correctAnswer = esc(q.options[q.correct] ?? '');
+  const explanation = q.explanation ? ` ${fmt(q.explanation)}` : '';
+  const correctAnswer = fmt(q.options[q.correct] ?? '');
 
   fb.className = 'feedback-box show ' + (isCorrect ? 'correct' : 'incorrect');
   fb.innerHTML = isCorrect

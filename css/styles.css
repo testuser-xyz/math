@@ -121,6 +121,27 @@ p:last-child { margin-bottom: 0; }
 }
 [data-theme="dark"] .math-inline { color: var(--primary-light); }
 
+/* Keep exponents and bases crisp and aligned in rendered equations. */
+.formula-card-text sup,
+.formula-card-text sub,
+.solved-step-math sup,
+.solved-step-math sub,
+.quiz-question-text sup,
+.quiz-question-text sub,
+.quiz-option sup,
+.quiz-option sub,
+.quiz-explanation sup,
+.quiz-explanation sub,
+.practice-q-text sup,
+.practice-q-text sub,
+.feedback-box sup,
+.feedback-box sub,
+.example-table sup,
+.example-table sub {
+  font-size: 0.78em;
+  line-height: 0;
+}
+
 /* ---------- Layout Utilities ---------- */
 .container {
   max-width: 1140px;

@@ -149,13 +149,14 @@
 
         // Other topic quiz buttons
         const topics = await window.Module2.getAllTopics();
+        const norm = window.Module2.normalizeDisplayText || ((v) => String(v ?? ''));
         const otherEl = document.getElementById('otherQuizTopics');
         if (otherEl && topics) {
           otherEl.innerHTML = topics.map(t =>
             `<a href="quiz.html?id=${t.id}"
                 class="btn btn-secondary btn-sm"
                 style="${String(t.id) === current ? 'background:var(--primary);color:#fff;border-color:var(--primary)' : ''}">
-               ${t.icon} Topic ${t.id}
+               ${norm(t.icon)} Topic ${t.id}
              </a>`
           ).join('');
         }

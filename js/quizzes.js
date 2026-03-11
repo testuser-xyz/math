@@ -53,7 +53,7 @@ function renderQuestion() {
   showEl('quizScoreCard', false);
 
   const qText = document.getElementById('quizQuestionText');
-  if (qText) qText.textContent = q.question;
+  if (qText) qText.innerHTML = fmtQ(q.question);
 
   const optList = document.getElementById('quizOptions');
   if (!optList) return;
@@ -62,7 +62,7 @@ function renderQuestion() {
   optList.innerHTML = q.options.map((opt, i) => `
     <button class="quiz-option" data-idx="${i}" onclick="window.Module2.selectOption(this, ${i})">
       <span class="quiz-option-letter">${letters[i]}</span>
-      <span>${escQ(opt)}</span>
+      <span>${fmtQ(opt)}</span>
     </button>`).join('');
 
   // Hide explanation and disable Next until answered
@@ -103,7 +103,7 @@ function selectOption(btnEl, chosenIdx) {
   // Show explanation
   const expBox = document.getElementById('quizExplanation');
   if (expBox) {
-    expBox.textContent = (isCorrect ? '✅ Correct! ' : '❌ Not quite. ') + q.explanation;
+    expBox.innerHTML = (isCorrect ? '✅ Correct! ' : '❌ Not quite. ') + fmtQ(q.explanation);
     expBox.classList.remove('hidden');
     expBox.classList.add('show');
     expBox.style.borderLeftColor = isCorrect ? 'var(--success)' : 'var(--error)';
@@ -213,10 +213,10 @@ function buildReviewList() {
       const q   = _quiz.questions[r.q];
       const letters = ['A','B','C','D','E'];
       return `<div style="background:var(--surface-2);border-radius:8px;padding:.85rem;margin-bottom:.65rem;font-size:.9rem">
-        <p style="font-weight:700;margin-bottom:.5rem">${escQ(q.question)}</p>
-        <p style="color:var(--error)">❌ You chose: ${letters[r.chose]}. ${escQ(q.options[r.chose])}</p>
-        <p style="color:var(--success)">✅ Correct: ${letters[q.correct]}. ${escQ(q.options[q.correct])}</p>
-        <p style="color:var(--text-muted);font-size:.85rem;margin-top:.3rem">${escQ(q.explanation)}</p>
+        <p style="font-weight:700;margin-bottom:.5rem">${fmtQ(q.question)}</p>
+        <p style="color:var(--error)">❌ You chose: ${letters[r.chose]}. ${fmtQ(q.options[r.chose])}</p>
+        <p style="color:var(--success)">✅ Correct: ${letters[q.correct]}. ${fmtQ(q.options[q.correct])}</p>
+        <p style="color:var(--text-muted);font-size:.85rem;margin-top:.3rem">${fmtQ(q.explanation)}</p>
       </div>`;
     }).join('')}`;
 }
@@ -232,6 +232,13 @@ function setTextEl(id, text) {
 }
 function escQ(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function fmtQ(str) {
+  if (window.Module2 && typeof window.Module2.formatMathText === 'function') {
+    return window.Module2.formatMathText(str);
+  }
+  return escQ(str);
 }
 
 // ── Expose globally ──────────────────────────────────────────────────────────

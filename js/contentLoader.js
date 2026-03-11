@@ -69,6 +69,74 @@ function esc(str) {
     .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+// ── Text normalization + math formatting helpers ────────────────────────────
+const _SUP_MAP = {
+  '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4',
+  '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9',
+  '⁺': '+', '⁻': '-', 'ˣ': 'x', 'ⁿ': 'n'
+};
+const _SUB_MAP = {
+  '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4',
+  '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9'
+};
+const _CP1252_REV = {
+  0x20AC: 0x80, 0x201A: 0x82, 0x0192: 0x83, 0x201E: 0x84,
+  0x2026: 0x85, 0x2020: 0x86, 0x2021: 0x87, 0x02C6: 0x88,
+  0x2030: 0x89, 0x0160: 0x8A, 0x2039: 0x8B, 0x0152: 0x8C,
+  0x017D: 0x8E, 0x2018: 0x91, 0x2019: 0x92, 0x201C: 0x93,
+  0x201D: 0x94, 0x2022: 0x95, 0x2013: 0x96, 0x2014: 0x97,
+  0x02DC: 0x98, 0x2122: 0x99, 0x0161: 0x9A, 0x203A: 0x9B,
+  0x0153: 0x9C, 0x017E: 0x9E, 0x0178: 0x9F
+};
+
+function normalizeDisplayText(raw) {
+  const str = String(raw ?? '');
+  if (!/[ÃÂâËð]/.test(str)) return str;
+
+  // Repair common UTF-8 text that was decoded as Windows-1252.
+  const bytes = [];
+  for (const ch of str) {
+    const code = ch.charCodeAt(0);
+    if (code <= 0xFF) {
+      bytes.push(code);
+      continue;
+    }
+    const mapped = _CP1252_REV[code];
+    if (mapped === undefined) return str;
+    bytes.push(mapped);
+  }
+
+  try {
+    return new TextDecoder('utf-8', { fatal: true }).decode(new Uint8Array(bytes));
+  } catch {
+    return str;
+  }
+}
+
+function _fromSupChars(chars) {
+  return [...chars].map(ch => _SUP_MAP[ch] || ch).join('');
+}
+
+function _fromSubChars(chars) {
+  return [...chars].map(ch => _SUB_MAP[ch] || ch).join('');
+}
+
+function formatMathText(raw) {
+  let out = esc(normalizeDisplayText(raw));
+
+  // log₂(x) / log2(x) formatting
+  out = out.replace(/\blog([₀₁₂₃₄₅₆₇₈₉]+)\s*\(/g, (_, s) => `log<sub>${_fromSubChars(s)}</sub>(`);
+  out = out.replace(/\blog_?([0-9eE]+)\s*\(/g, (_, s) => `log<sub>${s}</sub>(`);
+
+  // caret exponent formatting: 2^x, (1+r)^t, 10^8
+  out = out.replace(/([A-Za-z0-9\)\]])\^([A-Za-z0-9+\-]+)/g, '$1<sup>$2</sup>');
+
+  // unicode superscript formatting: 2ˣ, 10⁸
+  out = out.replace(/([A-Za-z0-9\)\]])([⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ˣⁿ]+)/g, (_, b, s) => `${b}<sup>${_fromSupChars(s)}</sup>`);
+
+  return out;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // INDEX PAGE  –  render topic cards grid
 // ─────────────────────────────────────────────────────────────────────────────
@@ -94,10 +162,10 @@ async function renderHomepage() {
            data-topic-id="${t.id}">
         <div class="topic-card-color-bar" style="background:${esc(t.color)}"></div>
         <div class="topic-card-body">
-          <span class="topic-card-icon">${esc(t.icon)}</span>
+          <span class="topic-card-icon">${esc(normalizeDisplayText(t.icon))}</span>
           <div class="topic-card-number">Topic ${i + 1}</div>
-          <div class="topic-card-title">${esc(t.title)}</div>
-          <p class="topic-card-summary">${esc(t.summary)}</p>
+          <div class="topic-card-title">${esc(normalizeDisplayText(t.title))}</div>
+          <p class="topic-card-summary">${formatMathText(t.summary)}</p>
           <div class="topic-card-footer">
             ${completed
               ? '<span class="topic-completed-badge">✅ Completed</span>'
@@ -117,11 +185,11 @@ async function renderHomepage() {
       return `
         <div class="path-step">
           <div class="path-step-dot" style="background:${esc(t.color)}">
-            ${completed ? '✅' : esc(t.icon)}
+            ${completed ? '✅' : esc(normalizeDisplayText(t.icon))}
           </div>
           <div class="path-step-content">
-            <div class="path-step-title">${esc(t.title)}</div>
-            <div class="path-step-meta">${esc(t.summary.slice(0,70))}…</div>
+            <div class="path-step-title">${esc(normalizeDisplayText(t.title))}</div>
+            <div class="path-step-meta">${formatMathText(String(t.summary || '').slice(0,70))}…</div>
           </div>
         </div>`;
     }).join('');
@@ -180,7 +248,7 @@ async function renderTopicPage() {
   if (quizLink)     quizLink.href     = `quiz.html?id=${topic.id}`;
 
   // Formula card
-  setEl('topicFormula', topic.formula || '');
+  setElHtml('topicFormula', formatMathText(topic.formula || ''));
 
   // Build accordion
   const accordionEl = document.getElementById('topicAccordion');
@@ -193,7 +261,7 @@ async function renderTopicPage() {
       <li>
         <a href="topic.html?id=${t.id}" class="${t.id === topic.id ? 'current' : ''}">
           <span class="quick-nav-dot"></span>
-          ${esc(t.icon)} ${esc(t.title)}
+          ${esc(normalizeDisplayText(t.icon))} ${esc(normalizeDisplayText(t.title))}
         </a>
       </li>`).join('');
   }
@@ -212,13 +280,13 @@ function buildAccordion(t) {
   const sections = [
     {
       id: 'explain', emoji: '💡', title: 'Simple Explanation',
-      body: `<p>${esc(t.explanation).replace(/\n/g,'<br>')}</p>
-             <div class="key-idea">🔑 <strong>Key Idea:</strong> ${esc(t.keyIdea)}</div>`
+      body: `<p>${formatMathText(t.explanation).replace(/\n/g,'<br>')}</p>
+             <div class="key-idea">🔑 <strong>Key Idea:</strong> ${formatMathText(t.keyIdea)}</div>`
     },
     {
       id: 'steps', emoji: '📋', title: 'Step-by-Step Process',
       body: `<ol class="steps-list">${t.steps.map((s,i)=>`
-               <li><span class="step-num">${i+1}</span><span>${esc(s)}</span></li>`).join('')}
+               <li><span class="step-num">${i+1}</span><span>${formatMathText(s)}</span></li>`).join('')}
              </ol>`
     },
     {
@@ -239,7 +307,7 @@ function buildAccordion(t) {
                  <button class="btn btn-sm btn-secondary" onclick="window.Module2.resetGraph()">↺ Reset</button>
                </div>
                <div class="graph-legend">
-                 <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div> y = ${t.graphType === 'logarithmic' ? 'log(x)' : '2ˣ'}</div>
+                 <div class="legend-item"><div class="legend-dot" style="background:#4A90D9"></div> ${formatMathText(t.graphType === 'logarithmic' ? 'y = log(x)' : 'y = 2^x')}</div>
                </div>
              </div>`
     },
@@ -257,7 +325,7 @@ function buildAccordion(t) {
                <div class="did-you-know-icon">🌟</div>
                <div class="did-you-know-text">
                  <div class="did-you-know-label">Fun Fact</div>
-                 ${esc(t.didYouKnow)}
+                 ${formatMathText(t.didYouKnow)}
                </div>
              </div>`
     }
@@ -281,14 +349,14 @@ function buildAccordion(t) {
 function buildExampleCard(ex) {
   if (!ex) return '<p>No example available.</p>';
   const rows = ex.table ? ex.table.map(r =>
-    `<tr><td><strong>${esc(r.label)}</strong></td><td>${esc(r.value)}</td></tr>`
+    `<tr><td><strong>${formatMathText(r.label)}</strong></td><td>${formatMathText(r.value)}</td></tr>`
   ).join('') : '';
   return `
     <div class="example-card">
-      <div class="example-card-title">${esc(ex.title)}</div>
-      <p class="example-story">${esc(ex.story)}</p>
+      <div class="example-card-title">${formatMathText(ex.title)}</div>
+      <p class="example-story">${formatMathText(ex.story)}</p>
       ${rows ? `<table class="example-table">
-        <thead><tr><th>${esc(ex.title)}</th><th>Value</th></tr></thead>
+        <thead><tr><th>${formatMathText(ex.title)}</th><th>Value</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>` : ''}
     </div>`;
@@ -300,16 +368,16 @@ function buildSolvedProblem(sp) {
     <div class="solved-step" id="sstep-${i}">
       <span class="solved-step-num">Step ${s.step}</span>
       <div class="solved-step-content">
-        <div class="solved-step-text">${esc(s.text)}</div>
-        <code class="solved-step-math">${esc(s.math)}</code>
+        <div class="solved-step-text">${formatMathText(s.text)}</div>
+        <code class="solved-step-math">${formatMathText(s.math)}</code>
       </div>
     </div>`).join('');
 
   return `
     <div class="solved-problem">
-      <div class="solved-question">❓ ${esc(sp.question)}</div>
+      <div class="solved-question">❓ ${formatMathText(sp.question)}</div>
       <div class="solved-steps" id="solvedSteps">${steps}</div>
-      <div class="solved-answer" id="solvedAnswer">✅ <strong>Answer:</strong> ${esc(sp.answer)}</div>
+      <div class="solved-answer" id="solvedAnswer">✅ <strong>Answer:</strong> ${formatMathText(sp.answer)}</div>
       <div class="solved-controls">
         <button class="btn btn-accent btn-sm" onclick="window.Module2.revealNextStep()">👁 Reveal Next Step</button>
         <button class="btn btn-success btn-sm" onclick="window.Module2.revealAllSteps()">✅ Show All</button>
@@ -322,12 +390,12 @@ function buildTipsMistakes(tips, mistakes) {
   const tipsHtml = (tips || []).map(t => `
     <div class="tip-item">
       <span class="tip-icon">✅</span>
-      <span>${esc(t)}</span>
+      <span>${formatMathText(t)}</span>
     </div>`).join('');
   const mistakesHtml = (mistakes || []).map(m => `
     <div class="mistake-item">
       <span class="tip-icon">⚠️</span>
-      <span>${esc(m)}</span>
+      <span>${formatMathText(m)}</span>
     </div>`).join('');
 
   return `
@@ -374,12 +442,12 @@ async function renderPracticePage() {
           ${isTF ? 'True/False' : 'MCQ'}
         </span>
       </div>
-      <div class="practice-q-text">${esc(p.question)}</div>
+      <div class="practice-q-text">${formatMathText(p.question)}</div>
       <div class="quiz-options" id="prac-options-${i}" role="group" aria-label="Practice options ${i + 1}">
         ${options.map((opt, j) => `
           <button class="quiz-option" data-idx="${j}" onclick="window.Module2.selectPracticeOption(${i}, ${j}, this)">
             <span class="quiz-option-letter">${letters[j] || (j + 1)}</span>
-            <span>${esc(opt)}</span>
+            <span>${formatMathText(opt)}</span>
           </button>`).join('')}
       </div>
       <div class="feedback-box" id="fb-${i}"></div>
@@ -418,8 +486,14 @@ async function renderQuizPage() {
 function setEl(id, text, attr, val) {
   const el = document.getElementById(id);
   if (!el) return;
-  if (text !== null && text !== undefined) el.textContent = text;
+  if (text !== null && text !== undefined) el.textContent = normalizeDisplayText(text);
   if (attr && val !== undefined) el.setAttribute(attr, val);
+}
+
+function setElHtml(id, html) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = html;
 }
 
 // ── Expose globally ───────────────────────────────────────────────────────────
@@ -433,5 +507,7 @@ Object.assign(window.Module2, {
   renderPracticePage,
   renderQuizPage,
   buildExampleCard,
+  formatMathText,
+  normalizeDisplayText,
   esc
 });
