@@ -12,6 +12,7 @@ let _topicsCache = null;
 
 async function loadTopics() {
   if (_topicsCache) return _topicsCache;
+
   try {
     const res = await fetch(TOPICS_URL);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -19,6 +20,12 @@ async function loadTopics() {
     _topicsCache = data.topics;
     return _topicsCache;
   } catch (err) {
+    // Fallback for environments where fetch to local JSON is blocked.
+    if (window.Module2Topics && Array.isArray(window.Module2Topics.topics)) {
+      _topicsCache = window.Module2Topics.topics;
+      return _topicsCache;
+    }
+
     showFetchError();
     throw err;
   }
